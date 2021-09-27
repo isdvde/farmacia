@@ -12,17 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::prefix('empleado')->group(function() {
 
+	Route::get('/', 'EmpleadoController@index');
+	Route::get('create', 'EmpleadoController@create');
+	Route::post('create', 'EmpleadoController@add');
+	Route::get('{id}/edit', 'EmpleadoController@edit');
+	Route::post('{id}/edit', 'EmpleadoController@update');
+	Route::post('delete', 'EmpleadoController@delete');
 
+});
 
 //farmacias
 Route::get('farmacias',[farmaciaController::class,'index' ]);
