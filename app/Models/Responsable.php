@@ -38,7 +38,7 @@ class Responsable extends Model
     /**
      * @var array
      */
-    protected $fillable = ['ci_representante', 'nombre', 'apellido', 'telefono'];
+    protected $fillable = ['ci','ci_representante', 'nombre', 'apellido', 'telefono'];
 
     /**
      * Indicates if the model should be timestamped.

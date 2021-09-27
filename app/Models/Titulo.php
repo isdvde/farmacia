@@ -32,7 +32,7 @@ class Titulo extends Model
     /**
      * @var array
      */
-    protected $fillable = ['universidad', 'fecha', 'n_registro', 'p_sanitario', 'n_colegiatura'];
+    protected $fillable = ['ci','universidad', 'fecha', 'n_registro', 'p_sanitario', 'n_colegiatura'];
 
     /**
      * Indicates if the model should be timestamped.
