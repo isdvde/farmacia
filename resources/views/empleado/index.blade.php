@@ -15,6 +15,7 @@
 					<th scope="col">Edad</th>
 					<th scope="col">Cargo</th>
 					<th scope="col">Telefono</th>
+					<th scope="col">Accion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,9 +29,8 @@
 					<th>{{$empleado->cargo}}</th>
 					<th>{{$empleado->telefono}}</th>
 
-					{{-- <th class="col-1">
-
-						<a href="{{url('empleado/'.$empleado->id.'/edit')}}" class="btn btn-info">Editar</a>
+					<th class="col-1">
+						<a href="{{url('empleado/'.$empleado->ci.'/edit')}}" class="btn btn-info">Editar</a>
 					</th>
 					<th class="col-1">
 						<form action="{{url('empleado/delete')}}" method="POST">
@@ -38,7 +38,7 @@
 							<input type="hidden" id="id" name="id" value="{{$empleado->id}}">
 							<button type="submit" class="btn btn-danger">Eliminar</button>
 						</form>
-					</th> --}}
+					</th>
 				</tr>
 				@endforeach
 

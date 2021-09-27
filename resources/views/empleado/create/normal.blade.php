@@ -34,7 +34,7 @@
 </div>
 
 {{-- Lista de Cargos --}}
-<div class="mb-3">
+{{-- <div class="mb-3">
 	<label class="form-label col-4" for="cargo">Cargo</label>
 	<select class="form-select" id="cargo" name="cargo">
 		<option selected>Elija un cargo...</option>
@@ -43,6 +43,16 @@
 		<option value="farmaceutico">Farmaceutico</option>
 		<option value="vigilante">Vigilante</option>
 		<option value="analista">Analista</option>
+	</select>
+</div> --}}
+
+<div class="mb-3">
+	<label class="form-label col-4" for="cargo">Cargo</label>
+	<select class="form-select" id="cargo" name="cargo">
+		<option selected>Elija un cargo...</option>
+		@foreach ($cargos as $key => $value)
+			<option value="{{ $key }}">{{ $value }}</option>
+		@endforeach
 	</select>
 </div>
 

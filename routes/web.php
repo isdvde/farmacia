@@ -26,8 +26,8 @@ Route::prefix('empleado')->group(function() {
 	Route::get('/', 'EmpleadoController@index');
 	Route::get('create', 'EmpleadoController@create');
 	Route::post('create', 'EmpleadoController@add');
-	Route::get('{id}/edit', 'EmpleadoController@edit');
-	Route::post('{id}/edit', 'EmpleadoController@update');
+	Route::get('{ci}/edit', 'EmpleadoController@edit');
+	Route::post('{ci}/edit', 'EmpleadoController@update');
 	Route::post('delete', 'EmpleadoController@delete');
 
 });

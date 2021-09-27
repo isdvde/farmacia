@@ -3,35 +3,32 @@
 
 <div class="row justify-content-center">
 	<div class="col-4 ">
-		<form action="{{url('empleado/create')}}" method="POST">
+		<form action="{{url('empleado/'.$empleado->id.'/edit')}}" method="POST">
 			@csrf
 
 			{{-- SECCION BASE --}}
-			<div class="text-center">
-				<h4 class="h4">Empleado</h4>
-			</div>
-			@include('empleado.create.normal')
+			@include('empleado.edit.normal')
 			{{-- FIN SECCION NORMAL --}}
 
 			{{-- SECCION FARMACEUTICO --}}
-			<div id="secFarma" style="display: none">
+			<div id="secFarma" @if($empleado->cargo == 'farmaceutico')style="display: block" @else style="display: none" @endif>
 				<div class="text-center">
 					<h4 class="h4">Titulo</h4>
 				</div>
-				@include('empleado.create.farmaceutico')
+				@include('empleado.edit.farmaceutico')
 			</div>
 			{{-- FIN SECCION FARMACEUTICO --}}
 
 			{{-- SECCION PASANTE --}}
-			<div id="secPasante" style="display: none">
+			<div id="secPasante" @if($empleado->cargo == 'pasante')style="display: block" @else style="display: none" @endif>
 				<div class="text-center">
 					<h4 class="h4">Pasantia</h4>
 				</div>
-				@include('empleado.create.pasante')
+				@include('empleado.edit.pasante')
 				<div class="text-center">
 					<h4 class="h4">Responsable</h4>
 				</div>
-				@include('empleado.create.responsable')
+				@include('empleado.edit.responsable')
 			</div>
 			{{-- FIN SECCION PASANTE --}}
 

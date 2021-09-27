@@ -11,6 +11,15 @@ use Illuminate\Http\Request;
 
 class EmpleadoController extends Controller
 {
+
+	/*static protected $cargos = [
+		"pasante" => 'Pasante',
+		"administrativo" => 'Administrativo',
+		"farmaceutico" => 'Farmaceutico',
+		"vigilante" => 'Vigilante',
+		"analista" => 'Analista',
+	];*/
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -29,8 +38,16 @@ class EmpleadoController extends Controller
 	 */
 	public function create()
 	{
+		$cargos = [
+			"pasante" => 'Pasante',
+			"administrativo" => 'Administrativo',
+			"farmaceutico" => 'Farmaceutico',
+			"vigilante" => 'Vigilante',
+			"analista" => 'Analista',
+		];
 		return view('empleado.create.create')
-		->with('farmacias', Farmacia::all());
+		->with('farmacias', Farmacia::all())
+		->with('cargos', $cargos);
 	}
 
 	/**
@@ -41,16 +58,6 @@ class EmpleadoController extends Controller
 	 */
 	public function add(Request $request)
 	{
-/*		$empleado = new Empleado();
-		$empleado->ci = $request->ci;
-		$empleado->id_farmacia = $request->farmacia;
-		$empleado->nombre = $request->nombre;
-		$empleado->apellido = $request->apellido;
-		$empleado->edad = $request->edad;
-		$empleado->cargo = $request->cargo;
-		$empleado->telefono = $request->telefono;
-
-		return $request->all();*/
 
 		Empleado::create([
 			'ci' => $request->ci,
@@ -117,9 +124,19 @@ class EmpleadoController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function edit($ci)
 	{
-		//
+		$cargos = [
+			"pasante" => 'Pasante',
+			"administrativo" => 'Administrativo',
+			"farmaceutico" => 'Farmaceutico',
+			"vigilante" => 'Vigilante',
+			"analista" => 'Analista',
+		];
+		return view('empleado.edit.edit')
+		->with('empleado', Empleado::find($ci))
+		->with('farmacias', Farmacia::all())
+		->with('cargos',$cargos);	
 	}
 
 	/**
