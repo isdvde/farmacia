@@ -135,6 +135,9 @@ class EmpleadoController extends Controller
 		];
 		return view('empleado.edit.edit')
 		->with('empleado', Empleado::find($ci))
+		->with('pasantia', Pasantia::find($ci))
+		->with('titulo', Titulo::find($ci))
+		->with('responsable', Responsable::find($ci))
 		->with('farmacias', Farmacia::all())
 		->with('cargos',$cargos);	
 	}
@@ -146,9 +149,58 @@ class EmpleadoController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(Request $request, $ci)
 	{
-		//
+		$empleado = Empleado::find($ci);
+		$empleado->ci = $request->ci;
+		$empleado->id_farmacia = $request->farmacia;
+		$empleado->nombre = $request->nombre;
+		$empleado->apellido = $request->apellido;
+		$empleado->edad = $request->edad;
+		$empleado->cargo = $request->cargo;
+		$empleado->telefono = $request->telefono;
+		$empleado->save();
+
+
+		if($request->cargo == "farmaceutico") {
+			$titulo = Titulo::find($ci);
+			$titulo->ci = $request->ci; 
+			$titulo->universidad = $request->universidad;
+			$titulo->fecha = $request->fecha;
+			$titulo->n_registro = $request->n_registro;
+			$titulo->p_sanitario = $request->p_sanitario;
+			$titulo->n_colegiatura = $request->n_colegiatura;
+			$titulo->save();
+		}
+
+
+		if($request->cargo == "pasante") {
+			$pasantia = Pasantia::find($ci);
+			$request->minoria_edad == "1" ? $minoria = true : $minoria = false;
+			$request->activo == "1" ? $activo = true : $activo = false;
+
+			$pasantia->ci = $request->ci;
+			$pasantia->institucion = $request->institucion;
+			$pasantia->especialidad = $request->especialidad;
+			$pasantia->f_inicio = $request->f_inicio;
+			$pasantia->f_final = $request->f_final;
+			$pasantia->n_permiso = $request->n_permiso; 
+			$pasantia->minoria_edad = $minoria;
+			$pasantia->activo = $activo;
+			$pasantia->save();
+
+			$responsable = Responsable::find($ci);
+			$responsable->ci = $request->ci;
+			$responsable->ci_representante = $request->ci_r;
+			$responsable->nombre = $request->nombre_r;
+			$responsable->apellido = $request->apellido_r;
+			$responsable->telefono = $request->telefono_r;
+			$responsable->save();
+		}
+
+
+
+		return redirect('empleado');
 	}
 
 	/**

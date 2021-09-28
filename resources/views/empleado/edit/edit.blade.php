@@ -3,15 +3,19 @@
 
 <div class="row justify-content-center">
 	<div class="col-4 ">
-		<form action="{{url('empleado/'.$empleado->id.'/edit')}}" method="POST">
+		<form action="{{url('empleado/'.$empleado->ci.'/edit')}}" method="POST">
 			@csrf
 
 			{{-- SECCION BASE --}}
+			<div class="text-center">
+				<h4 class="h4">Empleado</h4>
+			</div>
 			@include('empleado.edit.normal')
 			{{-- FIN SECCION NORMAL --}}
 
 			{{-- SECCION FARMACEUTICO --}}
-			<div id="secFarma" @if($empleado->cargo == 'farmaceutico')style="display: block" @else style="display: none" @endif>
+			<div id="secFarma" 
+			@if($empleado->cargo == 'farmaceutico')style="display: block" @else style="display: none" @endif>
 				<div class="text-center">
 					<h4 class="h4">Titulo</h4>
 				</div>
@@ -20,7 +24,8 @@
 			{{-- FIN SECCION FARMACEUTICO --}}
 
 			{{-- SECCION PASANTE --}}
-			<div id="secPasante" @if($empleado->cargo == 'pasante')style="display: block" @else style="display: none" @endif>
+			<div id="secPasante" 
+			@if($empleado->cargo == 'pasante')style="display: block" @else style="display: none" @endif>
 				<div class="text-center">
 					<h4 class="h4">Pasantia</h4>
 				</div>
