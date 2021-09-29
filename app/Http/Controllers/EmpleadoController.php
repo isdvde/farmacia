@@ -209,8 +209,10 @@ class EmpleadoController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function delete(Request $request)
 	{
-		//
+		$empleado = Empleado::find($request->ci);
+		$empleado->delete();
+		return redirect('empleado');
 	}
 }

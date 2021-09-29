@@ -35,7 +35,7 @@
 					<th class="col-1">
 						<form action="{{url('empleado/delete')}}" method="POST">
 							@csrf
-							<input type="hidden" id="id" name="id" value="{{$empleado->id}}">
+							<input type="hidden" id="ci" name="ci" value="{{$empleado->ci}}">
 							<button type="submit" class="btn btn-danger">Eliminar</button>
 						</form>
 					</th>

@@ -77,4 +77,17 @@ class Empleado extends Model
 	{
 		return $this->hasOne('App\Models\Titulo', 'ci', 'ci');
 	}
+
+	public function responsable()
+	{
+		return $this->hasOne('App\Models\Responsable', 'ci', 'ci');
+	}
+
+	public function delete()
+	{
+		$this->responsable()->delete();
+		$this->pasantia()->delete();
+		$this->titulo()->delete();
+		return parent::delete();
+	}
 }

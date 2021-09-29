@@ -19,17 +19,14 @@ Route::get('/', function () {
 */
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// EMPLEADOS
 Route::prefix('empleado')->group(function() {
-
 	Route::get('/', 'EmpleadoController@index');
 	Route::get('create', 'EmpleadoController@create');
 	Route::post('create', 'EmpleadoController@add');
 	Route::get('{ci}/edit', 'EmpleadoController@edit');
 	Route::post('{ci}/edit', 'EmpleadoController@update');
 	Route::post('delete', 'EmpleadoController@delete');
-
 });
 
 //farmacias
