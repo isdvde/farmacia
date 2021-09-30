@@ -1,19 +1,19 @@
 {{-- Cedula --}}
-<div class="mb-3">
+{{-- <div class="mb-3">
 	<label class="form-label col-4">CI</label>
 	<input type="number" class="form-control col-8" id="ci" name="ci" 
 	value="{{ $empleado->ci }}">
-</div>
+</div> --}}
 
 {{-- Lista de Farmacias --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="farmacia">Farmacia</label>
 	<select class="form-select" id="farmacia" name="farmacia">
 		<option selected value="{{ $empleado->id_farmacia }}">
-			{{ $farmacias->get($empleado->id_farmacia)->nombre }}
+			{{ $empleado->farmacia->nombre }}
 		</option>
 		@foreach ($farmacias as $farmacia)
-			<option value="{{ $farmacia->id }}">{{ $farmacia->nombre }}</option>
+		<option value="{{ $farmacia->id }}">{{ $farmacia->nombre }}</option>
 		@endforeach
 	</select>
 </div>
@@ -47,7 +47,7 @@
 			{{ $cargos[$empleado->cargo] }}
 		</option>
 		@foreach ($cargos as $key => $value)
-			<option value="{{ $key }}">{{ $value }}</option>
+		<option value="{{ $key }}">{{ $value }}</option>
 		@endforeach
 	</select>
 </div>
