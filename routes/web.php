@@ -29,6 +29,18 @@ Route::prefix('empleado')->group(function() {
 	Route::post('delete', 'EmpleadoController@delete');
 });
 
+
+// PEDIDOS
+Route::prefix('pedido')->group(function() {
+	Route::get('/', 'PedidoController@index');
+	Route::get('create', 'PedidoController@create');
+	Route::post('create', 'PedidoController@add');
+	Route::get('{id}/edit', 'PedidoController@edit');
+	Route::post('{id}/edit', 'PedidoController@update');
+	Route::post('delete', 'PedidoController@delete');
+});
+
+
 //farmacias
 Route::get('farmacias',[farmaciaController::class,'index' ]);
 
