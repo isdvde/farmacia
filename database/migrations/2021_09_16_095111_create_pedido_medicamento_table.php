@@ -17,6 +17,7 @@ class CreatePedidoMedicamentoTable extends Migration
             $table->integer('id', true);
             $table->integer('id_pedido')->index('id_pedido');
             $table->integer('id_medicamento')->index('id_medicamento');
+            $table->integer('cantidad');
         });
     }
 

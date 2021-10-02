@@ -23,7 +23,7 @@ class PedidoMedicamento extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pedido', 'id_medicamento'];
+    protected $fillable = ['id_pedido', 'id_medicamento','cantidad'];
 
     /**
      * Indicates if the model should be timestamped.

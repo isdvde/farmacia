@@ -26,12 +26,15 @@
 					<th>{{$pedido->forma_pago}}</th>
 
 					<th class="col-1">
+						<a href="{{url('pedido/'.$pedido->id.'/show')}}" class="btn btn-secondary">Ver</a>
+					</th>
+					<th class="col-1">
 						<a href="{{url('pedido/'.$pedido->id.'/edit')}}" class="btn btn-info">Editar</a>
 					</th>
 					<th class="col-1">
 						<form action="{{url('pedido/delete')}}" method="POST">
 							@csrf
-							<input type="hidden" id="ci" name="ci" value="{{$pedido->id}}">
+							<input type="hidden" id="id" name="id" value="{{$pedido->id}}">
 							<button type="submit" class="btn btn-danger">Eliminar</button>
 						</form>
 					</th>

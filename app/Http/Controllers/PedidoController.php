@@ -30,6 +30,7 @@ class PedidoController extends Controller
 	{
 		return view('pedido.create.create')
 		->with('laboratorios', Laboratorio::all())
+		->with('farmacias', Farmacia::all())
 		->with('medicamentos', Medicamento::all());
 	}
 
@@ -41,7 +42,23 @@ class PedidoController extends Controller
 	 */
 	public function add(Request $request)
 	{
-		return $request->all();
+		$pedido = Pedido::create([
+			'id_farmacia' => $request->farmacia,
+			'id_laboratorio' => $request->laboratorio,
+			'id_empleado' => $request->id_empleado,
+			'forma_pago' => $request->forma_pago,
+		]);
+
+		for ($i=0; $i < count($request->medicamento); $i++) { 
+			
+			$pedido->pedidoMedicamentos()->create([
+				'id_pedido' => $pedido->id,
+				'id_medicamento' => $request->medicamento[$i],
+				'cantidad' => $request->cantidad[$i],
+			]);
+		}
+		//return $request->all();
+		return redirect('pedido');
 	}
 
 	/**
@@ -52,7 +69,10 @@ class PedidoController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		return view('pedido.show')
+		->with('pedido',Pedido::find($id))
+		->with('medicamentos',Pedido::find($id)->pedidoMedicamentos)
+		;
 	}
 
 	/**
@@ -63,7 +83,16 @@ class PedidoController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		return view('pedido.edit.edit')
+		->with('laboratorios', Laboratorio::all())
+		->with('farmacias', Farmacia::all())
+		->with('medicamentos', Medicamento::all())
+		->with('pedido',Pedido::find($id))
+		->with('pmedicamentos',Pedido::find($id)->pedidoMedicamentos)
+		;	
+
+		//return Pedido::find($id)->pedidoMedicamentos;
+
 	}
 
 	/**
@@ -75,7 +104,24 @@ class PedidoController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$pedido = Pedido::find($id); 
+
+		$pedido->update([
+			'forma_pago' => $request->forma_pago,
+		]);
+
+		//for ($i=0; $i < count($request->cantidad); $i++) { 
+		$i = 0;
+		foreach($pedido->pedidoMedicamentos as $medicamento) {
+			$medicamento->update([
+				'cantidad' => $request->cantidad[$i],
+			]);
+			$i++;
+		}
+
+		return redirect('pedido');
+		//return $pedido->pedidoMedicamentos;
+
 	}
 
 	/**
@@ -84,8 +130,10 @@ class PedidoController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function delete(Request $request)
 	{
-		//
+		$pedido = Pedido::find($request->id);
+		$pedido->delete();
+		return redirect('pedido');
 	}
 }

@@ -21,7 +21,7 @@
 			{{-- FIN SECCION PEDIDO --}}
 
 			<div class="text-center">
-				<button type="submit" class="btn btn-primary">Guardar</button>
+				<button id="send" type="submit" class="btn btn-primary">Guardar</button>
 				<a href="{{url('pedido')}}" class="btn btn-danger">Cancelar</a>
 			</div>
 		</form>

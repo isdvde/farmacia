@@ -69,4 +69,10 @@ class Pedido extends Model
     {
         return $this->hasMany('App\Models\PedidoMedicamento', 'id_pedido');
     }
+
+    public function delete() {
+
+        $this->pedidoMedicamentos()->delete();
+        return parent::delete();
+    }
 }

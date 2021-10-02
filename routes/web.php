@@ -37,6 +37,7 @@ Route::prefix('pedido')->group(function() {
 	Route::post('create', 'PedidoController@add');
 	Route::get('{id}/edit', 'PedidoController@edit');
 	Route::post('{id}/edit', 'PedidoController@update');
+	Route::get('{id}/show', 'PedidoController@show');
 	Route::post('delete', 'PedidoController@delete');
 });
 
