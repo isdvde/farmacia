@@ -5,7 +5,7 @@
 
 	<div class="col-8">
 
-		<table class="table">
+		<table class="table" id="tabla">
 			<thead>
 				<tr>
 					<th scope="col">ID</th>
@@ -25,7 +25,7 @@
 					<th>{{$pedido->empleado->nombre}}</th>
 					<th>{{$pedido->forma_pago}}</th>
 
-					<th class="col-1">
+					<th class="col-1 text-center">
 						<a href="{{url('pedido/'.$pedido->id.'/show')}}" class="btn btn-secondary">Ver</a>
 					</th>
 					<th class="col-1">
@@ -61,3 +61,4 @@
 	</div>
 </div>
 @endsection
+
