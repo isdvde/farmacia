@@ -40,6 +40,7 @@ class Responsable extends Model
      */
     protected $fillable = ['ci','ci_representante', 'nombre', 'apellido', 'telefono'];
 
+
     /**
      * Indicates if the model should be timestamped.
      * 

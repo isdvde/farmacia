@@ -25,6 +25,7 @@ class PedidoMedicamento extends Model
      */
     protected $fillable = ['id_pedido', 'id_medicamento','cantidad'];
 
+
     /**
      * Indicates if the model should be timestamped.
      * 
@@ -48,3 +49,4 @@ class PedidoMedicamento extends Model
         return $this->belongsTo('App\Models\Medicamento', 'id_medicamento');
     }
 }
+w

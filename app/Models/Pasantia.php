@@ -37,6 +37,7 @@ class Pasantia extends Model
      */
     protected $fillable = ['ci','institucion', 'especialidad', 'f_inicio', 'f_final', 'n_permiso', 'minoria_edad', 'activo'];
 
+
     /**
      * Indicates if the model should be timestamped.
      * 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 /**
  * @property int $ci
  * @property int $id_farmacia
@@ -90,4 +91,5 @@ class Empleado extends Model
 		$this->titulo()->delete();
 		return parent::delete();
 	}
+
 }

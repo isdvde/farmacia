@@ -75,4 +75,5 @@ class Pedido extends Model
         $this->pedidoMedicamentos()->delete();
         return parent::delete();
     }
+
 }

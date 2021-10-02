@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Farmacia;
 use Illuminate\Http\Request;
+use App\Models\Inventario;
 
-class FarmaciaController extends Controller
+class InventarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class FarmaciaController extends Controller
      */
     public function index()
     {
-
-        $farmacia = Farmacia::all();
-        return view('farmacia.index')->with('farmacias',$farmacia);
+        $inventarios = Inventario::all();
+        return view('inventario.index')->with('inventarios',$inventarios);
     }
 
     /**
@@ -26,8 +25,7 @@ class FarmaciaController extends Controller
      */
     public function create()
     {
-
-        return view('farmacia.create');
+        //
     }
 
     /**
@@ -38,25 +36,16 @@ class FarmaciaController extends Controller
      */
     public function store(Request $request)
     {
-
-        $farmacias= new Farmacia();
-
-        $farmacias->id = $request->get('id');
-        $farmacias->nombre = $request->get('nombre');
-        $farmacias->ubicacion= $request->get('ubicacion');
-
-        $farmacias->save();
-
-        return redirect('/farmacia');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Farmacia  $farmacia
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Farmacia $farmacia)
+    public function show($id)
     {
         //
     }
@@ -64,14 +53,12 @@ class FarmaciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Farmacia  $farmacia
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function edit( $id)
+    public function edit($id)
     {
-        $farmacia = Farmacia::find($id);
-        return view('farmacia.edit')->with('farmacia',$farmacia);
+        //
     }
 
     /**
@@ -83,15 +70,7 @@ class FarmaciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $farmacia= Farmacia::find($id);
-
-        $farmacia->id = $request->get('id');
-        $farmacia->nombre = $request->get('nombre');
-        $farmacia->ubicacion= $request->get('ubicacion');
-
-        $farmacia->save();
-
-        return redirect('/farmacia');
+        //
     }
 
     /**
@@ -100,10 +79,8 @@ class FarmaciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Request $request)
+    public function destroy($id)
     {
-        $farmacia = Farmacia::find($request->id);
-		$farmacia->delete();
-		return redirect('farmacia');
+        //
     }
 }

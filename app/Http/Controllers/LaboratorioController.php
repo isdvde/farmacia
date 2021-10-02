@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Farmacia;
 use Illuminate\Http\Request;
+use App\Models\Laboratorio;
 
-class FarmaciaController extends Controller
+class LaboratorioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class FarmaciaController extends Controller
      */
     public function index()
     {
-
-        $farmacia = Farmacia::all();
-        return view('farmacia.index')->with('farmacias',$farmacia);
+        $laboratorios = Laboratorio::all();
+        return view('laboratorio.index')->with('laboratorios',$laboratorios);
     }
 
     /**
@@ -26,8 +25,7 @@ class FarmaciaController extends Controller
      */
     public function create()
     {
-
-        return view('farmacia.create');
+        return view('laboratorio.create');
     }
 
     /**
@@ -38,25 +36,25 @@ class FarmaciaController extends Controller
      */
     public function store(Request $request)
     {
+        $laboratorios= new Laboratorio();
 
-        $farmacias= new Farmacia();
+        $laboratorios->id = $request->get('id');
+        $laboratorios->nombre = $request->get('nombre');
+        $laboratorios->direccion= $request->get('direccion');
+        $laboratorios->telefono = $request->get('telefono');
 
-        $farmacias->id = $request->get('id');
-        $farmacias->nombre = $request->get('nombre');
-        $farmacias->ubicacion= $request->get('ubicacion');
+        $laboratorios->save();
 
-        $farmacias->save();
-
-        return redirect('/farmacia');
+        return redirect('/laboratorio');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Farmacia  $farmacia
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Farmacia $farmacia)
+    public function show($id)
     {
         //
     }
@@ -64,14 +62,13 @@ class FarmaciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Farmacia  $farmacia
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-    public function edit( $id)
+    public function edit($id)
     {
-        $farmacia = Farmacia::find($id);
-        return view('farmacia.edit')->with('farmacia',$farmacia);
+        $laboratorio = Laboratorio::find($id);
+        return view('laboratorio.edit')->with('laboratorio',$laboratorio);
     }
 
     /**
@@ -83,15 +80,16 @@ class FarmaciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $farmacia= Farmacia::find($id);
+        $laboratorio= Laboratorio::find($id);
 
-        $farmacia->id = $request->get('id');
-        $farmacia->nombre = $request->get('nombre');
-        $farmacia->ubicacion= $request->get('ubicacion');
+        $laboratorio->id = $request->get('id');
+        $laboratorio->nombre = $request->get('nombre');
+        $laboratorio->direccion= $request->get('direccion');
+        $laboratorio->telefono = $request->get('telefono');
 
-        $farmacia->save();
+        $laboratorio->save();
 
-        return redirect('/farmacia');
+        return redirect('/laboratorio');
     }
 
     /**
@@ -101,9 +99,9 @@ class FarmaciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function delete(Request $request)
-    {
-        $farmacia = Farmacia::find($request->id);
-		$farmacia->delete();
-		return redirect('farmacia');
-    }
+	{
+		$laboratorio = laboratorio::find($request->id);
+		$laboratorio->delete();
+		return redirect('laboratorio');
+	}
 }
