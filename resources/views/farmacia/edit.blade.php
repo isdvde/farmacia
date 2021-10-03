@@ -1,4 +1,4 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
 @section('contenido')
 
 <h2>EDITAR REGISTRO</h2>

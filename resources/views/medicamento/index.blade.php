@@ -1,4 +1,4 @@
-@extends('layouts.plantillabase');
+@extends('layouts.plantillabase')
 @section('contenido')
 
 <a href="medicamento/create" class="btn btn-primary">CREAR</a>
