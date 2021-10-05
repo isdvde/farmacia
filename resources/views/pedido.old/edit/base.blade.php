@@ -24,33 +24,40 @@ $forma_pago = array(
 )
 @endphp
 
+
 {{-- Lista de Farmacias --}}
-<div class="mb-3">
+{{-- <div class="mb-3">
 	<label class="form-label col-4" for="farmacia">Farmacia</label>
-	<select class="form-control" id="farmacia" name="farmacia">
-		<option value="" selected>Elija un farmacia...</option>
+	<select class="form-select" id="farmacia" name="farmacia">
+		<option selected value="{{ $pedido->farmacia->id }}">
+			{{ $pedido->farmacia->nombre }}
+		</option>
 		@foreach ($farmacias as $farmacia)
 		<option value="{{ $farmacia->id }}">{{ $farmacia->nombre }}</option>
 		@endforeach
 	</select>
-</div>
+</div> --}}
 
 {{-- Lista de Laboratorios --}}
-<div class="mb-3">
+{{-- <div class="mb-3">
 	<label class="form-label col-4" for="laboratorio">Laboratorio</label>
-	<select class="form-control" id="laboratorio" name="laboratorio">
-		<option value="" selected>Elija un laboratorio...</option>
+	<select class="form-select" id="laboratorio" name="laboratorio">
+		<option value="{{ $pedido->laboratorio->id }}" selected>
+			{{ $pedido->laboratorio->nombre }}
+		</option>
 		@foreach ($laboratorios as $laboratorio)
 		<option value="{{ $laboratorio->id }}">{{ $laboratorio->nombre }}</option>
 		@endforeach
 	</select>
-</div>
+</div> --}}
 
 {{-- Forma de Pago --}}
 <div class="mb-3">
-	<label class="form-label col-4" for="forma_pago">Cargo</label>
-	<select class="form-control" id="forma_pago" name="forma_pago">
-		<option value="" selected>Elija una forma de pago...</option>
+	<label class="form-label col-4" for="forma_pago">Forma de pago</label>
+	<select class="form-select" id="forma_pago" name="forma_pago">
+		<option value="{{ $pedido->forma_pago }}" selected>
+			{{ $forma_pago[$pedido->forma_pago] }}
+		</option>
 		@foreach ($forma_pago as $key => $value)
 			<option value="{{ $key }}">{{ $value }}</option>
 		@endforeach

@@ -24,10 +24,11 @@ $forma_pago = array(
 )
 @endphp
 
+
 {{-- Lista de Farmacias --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="farmacia">Farmacia</label>
-	<select class="form-control" id="farmacia" name="farmacia">
+	<select class="form-select" id="farmacia" name="farmacia">
 		<option value="" selected>Elija un farmacia...</option>
 		@foreach ($farmacias as $farmacia)
 		<option value="{{ $farmacia->id }}">{{ $farmacia->nombre }}</option>
@@ -38,7 +39,7 @@ $forma_pago = array(
 {{-- Lista de Laboratorios --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="laboratorio">Laboratorio</label>
-	<select class="form-control" id="laboratorio" name="laboratorio">
+	<select class="form-select" id="laboratorio" name="laboratorio">
 		<option value="" selected>Elija un laboratorio...</option>
 		@foreach ($laboratorios as $laboratorio)
 		<option value="{{ $laboratorio->id }}">{{ $laboratorio->nombre }}</option>
@@ -49,7 +50,7 @@ $forma_pago = array(
 {{-- Forma de Pago --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="forma_pago">Cargo</label>
-	<select class="form-control" id="forma_pago" name="forma_pago">
+	<select class="form-select" id="forma_pago" name="forma_pago">
 		<option value="" selected>Elija una forma de pago...</option>
 		@foreach ($forma_pago as $key => $value)
 			<option value="{{ $key }}">{{ $value }}</option>

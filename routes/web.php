@@ -21,6 +21,10 @@ use App\Http\Controllers\LaboratorioController;
 
 Auth::routes();
 
+Route::get('/', function(){
+    return view('layouts.main');
+});
+
 // EMPLEADOS
 Route::prefix('empleado')->group(function() {
 	Route::get('/', 'EmpleadoController@index');

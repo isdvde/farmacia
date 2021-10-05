@@ -49,4 +49,3 @@ class PedidoMedicamento extends Model
         return $this->belongsTo('App\Models\Medicamento', 'id_medicamento');
     }
 }
-w
