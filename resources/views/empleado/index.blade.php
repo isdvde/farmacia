@@ -1,64 +1,66 @@
-@extends('layouts.base')
+@extends('layouts.main')
 @section('content')
 
-<div class="row justify-content-center">
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Empleados</h1>
+	</div>
+</div><!--/.row-->
 
-	<div class="col-8">
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			{{-- <div class="panel-heading">
+				Empleados
+			</div> --}}
+			<div class="panel-body">
 
-		<table class="table">
-			<thead>
-				<tr>
-					<th scope="col">CI</th>
-					<th scope="col">Farmacia</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">Edad</th>
-					<th scope="col">Cargo</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Accion</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($empleados as $empleado)
-				<tr>
-					<th>{{$empleado->ci}}</th>
-					<th>{{$empleado->id_farmacia}}</th>
-					<th>{{$empleado->nombre}}</th>
-					<th>{{$empleado->apellido}}</th>
-					<th>{{$empleado->edad}}</th>
-					<th>{{$empleado->cargo}}</th>
-					<th>{{$empleado->telefono}}</th>
+				<table class="table" id="templeado">
+					<thead>
+						<tr>
+							<th scope="col">CI</th>
+							<th scope="col">Farmacia</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Edad</th>
+							<th scope="col">Cargo</th>
+							<th scope="col">Telefono</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($empleados as $empleado)
+						<tr>
+							<th>{{$empleado->ci}}</th>
+							<th>{{$empleado->id_farmacia}}</th>
+							<th>{{$empleado->nombre}}</th>
+							<th>{{$empleado->apellido}}</th>
+							<th>{{$empleado->edad}}</th>
+							<th>{{$empleado->cargo}}</th>
+							<th>{{$empleado->telefono}}</th>
 
-					<th class="col-1">
-						<a href="{{url('empleado/'.$empleado->ci.'/edit')}}" class="btn btn-info">Editar</a>
-					</th>
-					<th class="col-1">
-						<form action="{{url('empleado/delete')}}" method="POST">
-							@csrf
-							<input type="hidden" id="ci" name="ci" value="{{$empleado->ci}}">
-							<button type="submit" class="btn btn-danger">Eliminar</button>
-						</form>
-					</th>
-				</tr>
-				@endforeach
+							<th class="col-1">
+								<form action="{{url('empleado/delete')}}" method="POST">
+									@csrf
+									<a href="{{url('empleado/'.$empleado->ci.'/edit')}}" class="btn btn-info">Editar</a>
+									<input type="hidden" id="ci" name="ci" value="{{$empleado->ci}}">
+									<button type="submit" class="btn btn-danger">Eliminar</button>
+								</form>
+							</th>
+						</tr>
+						@endforeach
 
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>
 
-<div class="row justify-content-center">
-
-	<div class="col-2">
-
-		<a href="{{url('/empleado/create')}}" class="btn btn-primary">Añadir</a>
-	</div>
-
-	<div class="col-2">
-		<form action="{{url('logout')}}" method="POST">
-			@csrf
-			<button type="submit" class="btn btn-danger">Cerrar Sesion</button>
-		</form>
-	</div>
-</div>
+<script src="{{ url('lumino/js/datatables.min.js') }}"></script>
+<script>
+	$(document).ready( function () {
+		$('#templeado').DataTable();
+	} );
+</script>
 @endsection

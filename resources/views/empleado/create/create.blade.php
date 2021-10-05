@@ -1,45 +1,59 @@
-@extends('layouts.base')
+@extends('layouts.main')
 @section('content')
 
-<div class="row justify-content-center">
-	<div class="col-4 ">
-		<form action="{{url('empleado/create')}}" method="POST">
-			@csrf
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Empleados</h1>
+	</div>
+</div><!--/.row-->
 
-			{{-- SECCION BASE --}}
-			<div class="text-center">
-				<h4 class="h4">Empleado</h4>
-			</div>
-			@include('empleado.create.normal')
-			{{-- FIN SECCION NORMAL --}}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			{{-- <div class="panel-heading">
+				Empleados
+			</div> --}}
+			<div class="panel-body">
+				<form action="{{url('empleado/create')}}" method="POST">
+					@csrf
 
-			{{-- SECCION FARMACEUTICO --}}
-			<div id="secFarma" style="display: none">
-				<div class="text-center">
-					<h4 class="h4">Titulo</h4>
-				</div>
-				@include('empleado.create.farmaceutico')
-			</div>
-			{{-- FIN SECCION FARMACEUTICO --}}
+					{{-- SECCION BASE --}}
+					<div class="text-center">
+						<h4 class="h4">Informacion Principal</h4>
+					</div>
+					@include('empleado.create.normal')
+					{{-- FIN SECCION NORMAL --}}
 
-			{{-- SECCION PASANTE --}}
-			<div id="secPasante" style="display: none">
-				<div class="text-center">
-					<h4 class="h4">Pasantia</h4>
-				</div>
-				@include('empleado.create.pasante')
-				<div class="text-center">
-					<h4 class="h4">Responsable</h4>
-				</div>
-				@include('empleado.create.responsable')
-			</div>
-			{{-- FIN SECCION PASANTE --}}
+					{{-- SECCION FARMACEUTICO --}}
+					<div id="secFarma" style="display: none">
+						<div class="text-center">
+							<h4 class="h4">Informacion de Titulo</h4>
+						</div>
+						@include('empleado.create.farmaceutico')
+					</div>
+					{{-- FIN SECCION FARMACEUTICO --}}
 
-			<div class="text-center">
-				<button type="submit" class="btn btn-primary">Guardar</button>
-				<a href="{{url('empleado')}}" class="btn btn-danger">Cancelar</a>
+					{{-- SECCION PASANTE --}}
+					<div id="secPasante" style="display: none" class="mb-3">
+						<div class="text-center">
+							<h4 class="h4">Informacion de Pasantia</h4>
+						</div>
+						@include('empleado.create.pasante')
+						<div class="text-center">
+							<h4 class="h4">Informacion de Responsable</h4>
+						</div>
+						@include('empleado.create.responsable')
+					</div>
+					{{-- FIN SECCION PASANTE --}}
+
+					<div class="text-center" style="margin-top: 10px;">
+						<button type="submit" class="btn btn-primary">Guardar</button>
+						<a href="{{url('empleado')}}" class="btn btn-danger">Cancelar</a>
+						<a href="{{url('empleado/show')}}" class="btn btn-danger">Cancelar</a>
+					</div>
+				</form>
 			</div>
-		</form>
+		</div>
 	</div>
 </div>
 

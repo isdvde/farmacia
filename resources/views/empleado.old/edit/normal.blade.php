@@ -8,7 +8,7 @@
 {{-- Lista de Farmacias --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="farmacia">Farmacia</label>
-	<select class="form-control" id="farmacia" name="farmacia">
+	<select class="form-select" id="farmacia" name="farmacia">
 		<option selected value="{{ $empleado->id_farmacia }}">
 			{{ $empleado->farmacia->nombre }}
 		</option>
@@ -42,7 +42,7 @@
 {{-- Lista de Cargos --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="cargo">Cargo</label>
-	<select class="form-control" id="cargo" name="cargo">
+	<select class="form-select" id="cargo" name="cargo">
 		<option value="{{ $empleado->cargo }}" selected>
 			{{ $cargos[$empleado->cargo] }}
 		</option>

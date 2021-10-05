@@ -33,16 +33,25 @@
 	value="{{ $empleado->pasantia->n_permiso ?? ''}}">
 </div>
 
+{{-- Minoria de Edad --}}
+{{-- <div class="mb-3">
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value="1" name="minoria_edad" id="minoria_edad"
+		@isset($empleado->pasantia->minoria_edad) 
+			@if ($empleado->pasantia->minoria_edad == true) checked @endif>
+		@endisset
+		<label class="form-check-label" for="minoria_edad">Menor de Edad</label>
+	</div>
+</div> --}}
+
 {{-- Activo --}}
 <div class="mb-3">
-	<div class="checkbox">
-		<label class="form-label" for="activo">
-			<input class="form-check-input" type="checkbox" value="1" name="activo" id="activo"
-			@isset($empleado->pasantia->activo)
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" value="1" name="activo" id="activo"
+		@isset($empleado->pasantia->activo)
 			@if ($empleado->pasantia->activo == true) checked @endif>
-			@endisset
-			Activo
-		</label>
+		@endisset
+		<label class="form-check-label" for="activo">Activo</label>
 	</div>
 </div>
 

@@ -7,7 +7,7 @@
 {{-- Lista de Farmacias --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="farmacia">Farmacia</label>
-	<select class="form-control" id="farmacia" name="farmacia">
+	<select class="form-select" id="farmacia" name="farmacia">
 		<option selected>Elija un farmacia...</option>
 		@foreach ($farmacias as $farmacia)
 		<option value="{{ $farmacia->id }}">{{ $farmacia->nombre }}</option>
@@ -33,9 +33,22 @@
 	<input type="number" class="form-control" id="edad" name="edad" >
 </div>
 
+{{-- Lista de Cargos --}}
+{{-- <div class="mb-3">
+	<label class="form-label col-4" for="cargo">Cargo</label>
+	<select class="form-select" id="cargo" name="cargo">
+		<option selected>Elija un cargo...</option>
+		<option value="pasante">Pasante</option>
+		<option value="administrativo">Administrativo</option>
+		<option value="farmaceutico">Farmaceutico</option>
+		<option value="vigilante">Vigilante</option>
+		<option value="analista">Analista</option>
+	</select>
+</div> --}}
+
 <div class="mb-3">
 	<label class="form-label col-4" for="cargo">Cargo</label>
-	<select class="form-control" id="cargo" name="cargo">
+	<select class="form-select" id="cargo" name="cargo">
 		<option selected>Elija un cargo...</option>
 		@foreach ($cargos as $key => $value)
 			<option value="{{ $key }}">{{ $value }}</option>
