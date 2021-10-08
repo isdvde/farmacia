@@ -83,7 +83,6 @@ class MedicamentoController extends Controller
     {
         $medicamento= Medicamento::find($id);
 
-        $medicamento->id = $request->get('id');
         $medicamento->monodroga = $request->get('monodroga');
         $medicamento->presentacion= $request->get('presentacion');
         $medicamento->accion= $request->get('accion');

@@ -17,7 +17,7 @@ class Farmacia extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nombre', 'ubicacion'];
+    protected $fillable = ['nombre', 'ubicacion', 'telefono'];
 
     /**
      * Indicates if the model should be timestamped.

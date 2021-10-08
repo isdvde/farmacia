@@ -54,7 +54,7 @@ $forma_pago = array(
 {{-- Forma de Pago --}}
 <div class="mb-3">
 	<label class="form-label col-4" for="forma_pago">Forma de pago</label>
-	<select class="form-select" id="forma_pago" name="forma_pago">
+	<select class="form-control" id="forma_pago" name="forma_pago">
 		<option value="{{ $pedido->forma_pago }}" selected>
 			{{ $forma_pago[$pedido->forma_pago] }}
 		</option>

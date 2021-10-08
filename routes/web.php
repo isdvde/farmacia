@@ -22,7 +22,7 @@ use App\Http\Controllers\LaboratorioController;
 Auth::routes();
 
 Route::get('/', function(){
-    return view('layouts.main');
+    return view('home');
 });
 
 // EMPLEADOS

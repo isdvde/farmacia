@@ -1,36 +1,56 @@
-@extends('layouts.plantillabase')
-@section('contenido')
-<a href="inventario/create" class="btn btn-primary">CREAR</a>
+@extends('layouts.main')
+@section('content')
 
-<table class="table table-dark table-striped mr-4">
-<thead>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Inventario</h1>
+	</div>
+</div><!--/.row-->
 
- <tr>
-        <th scope="col">id </th>
-        <th scope="col">id_farmacia</th>
-        <th scope="col">id_medicamento </th>
-        <th scope="col">cantidad </th>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
 
-    </tr>
+			<div class="panel-body">
+				<table class="table" id="tinventario">
+					<thead>
+						<tr>
+							<th scope="col" class="text-center">ID</th>
+							<th scope="col" class="text-center">Farmacia</th>
+							<th scope="col" class="text-center">Medicaento</th>
+							<th scope="col" class="text-center">Cantidad</th>
+							<th scope="col" class="text-center"></th>
+						</tr>
+					</thead>
 
-</thead>
+					<tbody>
+						@foreach ( $inventarios as $inventario )
 
-<tbody>
- @foreach ( $inventarios as $inventario )
+						<tr>
+							<td class="text-center">{{$inventario->id}}</td>
+							<td class="text-center">{{$inventario->farmacia->nombre}}</td>
+							<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
+							<td class="text-center">{{$inventario->cantidad}}</td>
 
- <tr>
-    <td>{{$inventario->id}}</td>
-    <td>{{$inventario->id_farmacia}}</td>
-    <td>{{$inventario->id_medicamento}}</td>
-    <td>{{$inventario->cantidad}}</td>
+							<td class="col-1 text-center">
+								<a class="btn btn-info">Editar</a>
+								<button class="btn btn-danger">Borrar</button>
+							</td>
+						</tr>
 
-    <td>
-        <a class="btn btn-info">editar</a>
-        <button class="btn btn-danger">borrar </button>
-    </td>
- </tr>
+						@endforeach
+					</tbody>
+				</table>
 
- @endforeach
-</tbody>
-</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{{ url('lumino/js/datatables.min.js') }}"></script>
+<script>
+	$(document).ready( function () {
+		$('#tinventario').DataTable();
+	} );
+</script>
+
 @endsection

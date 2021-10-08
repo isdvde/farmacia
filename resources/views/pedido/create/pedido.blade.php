@@ -1,6 +1,6 @@
-{{-- <div id="clone" style="margin-bottom: 10px;">
+{{-- <div id="clone">
 	<div class="form-group">
-		<div class="col-xs-8">
+		<div class="col-xs-7" style="padding-left: 0; padding-right:0; ">
 			<select class="form-control" id="medicamento" name="medicamento[]">
 				<option value="" selected>Medicamento...</option>
 				@foreach ($medicamentos as $medicamento)
@@ -8,14 +8,16 @@
 				@endforeach
 			</select>
 		</div>
-		<div class="col-xs-3 form-group-sm">
+		<div class="col-xs-3 form-group-sm" style="padding-right: 0;">
 			<input type="number" class="form-control" id="cantidad" name="cantidad[]" placeholder="Cant...">
 		</div>
-		<div class="col-xs-1">
+		<div class="col-xs-1 text-center">
 			<button type="button" class="btn btn-danger" id="delMedicamento" style="display: block;">x</button>
 		</div>
 	</div>
 </div> --}}
+
+
 
 
 <div id="cloned"></div>
@@ -36,7 +38,7 @@
 
 			);*/
 
-			$('#cloned').append('<div id="clone"> <div class="form-group"  style="margin-bottom: 10px;"> <div class="col-xs-8"> <select class="form-control" id="medicamento" name="medicamento[]"> <option value="" selected>Medicamento...</option> @foreach ($medicamentos as $medicamento) <option value="{{ $medicamento->id }}">{{ $medicamento->monodroga."   -   ".$medicamento->presentacion }}</option> @endforeach </select> </div> <div class="col-xs-3 form-group-sm"> <input type="number" class="form-control" id="cantidad" name="cantidad[]" placeholder="Cant..."> </div> <div class="col-xs-1"> <button type="button" class="btn btn-danger" id="delMedicamento" style="display: block;">x</button> </div> </div> </div>'
+			$('#cloned').append('<div id="clone"> <div class="form-group"> <div class="col-xs-7" style="padding-left: 0; padding-right:0; "> <select class="form-control" id="medicamento" name="medicamento[]"> <option value="" selected>Medicamento...</option> @foreach ($medicamentos as $medicamento) <option value="{{ $medicamento->id }}">{{ $medicamento->monodroga."   -   ".$medicamento->presentacion }}</option> @endforeach </select> </div> <div class="col-xs-3 form-group-sm" style="padding-right: 0;"> <input type="number" class="form-control" id="cantidad" name="cantidad[]" placeholder="Cant..."> </div> <div class="col-xs-1 text-center"> <button type="button" class="btn btn-danger" id="delMedicamento" style="display: block;">x</button> </div> </div> </div>'
 			);
 		});
 

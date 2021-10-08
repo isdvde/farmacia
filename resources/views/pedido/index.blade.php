@@ -18,24 +18,24 @@
 				<table class="table" id="tpedido">
 					<thead>
 						<tr>
-							<th scope="col">ID</th>
-							<th scope="col">Farmacia</th>
-							<th scope="col">Laboratorio</th>
-							<th scope="col">Empleado</th>
-							<th scope="col">Pago</th>
-							<th scope="col"></th>
+							<th scope="col" class="text-center">ID</th>
+							<th scope="col" class="text-center">Farmacia</th>
+							<th scope="col" class="text-center">Laboratorio</th>
+							<th scope="col" class="text-center">Empleado</th>
+							<th scope="col" class="text-center">Pago</th>
+							<th scope="col" class="text-center"></th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach($pedidos as $pedido)
 						<tr>
-							<th>{{$pedido->id}}</th>
-							<th>{{$pedido->farmacia->nombre}}</th>
-							<th>{{$pedido->laboratorio->nombre}}</th>
-							<th>{{$pedido->empleado->nombre}}</th>
-							<th>{{$pedido->forma_pago}}</th>
+							<td class="text-center">{{$pedido->id}}</th>
+							<td class="text-center">{{$pedido->farmacia->nombre}}</th>
+							<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
+							<td class="text-center">{{$pedido->empleado->nombre}}</th>
+							<td class="text-center">{{$pedido->forma_pago}}</th>
 
-							<th class="col-1 text-center">
+							<td class="text-center" class="col-1 text-center">
 								<form action="{{url('pedido/delete')}}" method="POST" class="form-inline">
 									@csrf
 									<a href="{{url('pedido/'.$pedido->id.'/show')}}" class="btn btn-success">Ver</a>

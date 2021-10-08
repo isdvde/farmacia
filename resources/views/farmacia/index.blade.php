@@ -1,52 +1,58 @@
-@extends('layouts.plantillabase')
-@section('contenido')
+@extends('layouts.main')
+@section('content')
 
-<div class="row justify-content-center">
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Farmacias</h1>
+	</div>
+</div><!--/.row-->
 
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
 
+			<div class="panel-body">
+				<table class="table" id="tfarmacia">
+					<thead >
+						<tr>
+							<th scope="col" class="text-center">ID</th>
+							<th scope="col" class="text-center">Nombre</th>
+							<th scope="col" class="text-center">Ubicacion</th>
+							<th scope="col" class="text-center"></th>
+						</tr>
+					</thead>
 
-    <table class="table table-dark table-striped mr-4">
-<thead >
+					<tbody>
+						@foreach ( $farmacias as $farmacia )
 
-    <tr>
-        <th scope="col">id </th>
-        <th scope="col">nombre</th>
-        <th scope="col">ubicacion</th>
+						<tr>
+							<td class="text-center">{{$farmacia->id}}</td>
+							<td class="text-center">{{$farmacia->nombre}}</td>
+							<td class="text-center">{{$farmacia->ubicacion}}</td>
 
-    </tr>
+							<td class="col-1 text-center">
 
-</thead>
+								<form action="{{url('farmacia/delete')}}"  method="POST">
+									@csrf
+									<a href="{{url('farmacia/'.$farmacia->id.'/edit')}}" class="btn btn-info">Editar</a>
+									<input type="hidden" id="id" name="id" value="{{$farmacia->id}}">
+									<button type="submit" class="btn btn-danger">Borrar</button>
+								</form>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
 
-<tbody>
- @foreach ( $farmacias as $farmacia )
-
- <tr>
-    <td>{{$farmacia->id}}</td>
-    <td>{{$farmacia->nombre}}</td>
-    <td>{{$farmacia->ubicacion}}</td>
-
-    <td>
-       <th class="col-1">
-        <a href="{{url('farmacia/'.$farmacia->id.'/edit')}}" class="btn btn-info">editar</a>
-       </th>
-
-       <th class="col-1">
-           <form action="{{url('farmacia/delete')}}"  method="POST">
-                @csrf
-                <input type="hidden" id="id" name="id" value="{{$farmacia->id}}">
-                <button type="submit" class="btn btn-danger">borrar </button>
-            </form>
-        </th>
-    </td>
- </tr>
-
- @endforeach
-</tbody>
-</table>
-
+			</div>
+		</div>
+	</div>
 </div>
 
-<div class="row justify-content-center">
-<a href="farmacia/create" class="btn btn-primary">CREAR</a>
-</div>
+<script src="{{ url('lumino/js/datatables.min.js') }}"></script>
+<script>
+	$(document).ready( function () {
+		$('#tfarmacia').DataTable();
+	} );
+</script>
 @endsection

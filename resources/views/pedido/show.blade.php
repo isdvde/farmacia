@@ -28,18 +28,18 @@ $forma_pago = array(
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Farmacia</th>
-							<th scope="col">Laboratorio</th>
-							<th scope="col">Metodo de Pago</th>
-							<th scope="col">Analista</th>
+							<th scope="col" class="text-center">Farmacia</th>
+							<th scope="col" class="text-center">Laboratorio</th>
+							<th scope="col" class="text-center">Metodo de Pago</th>
+							<th scope="col" class="text-center">Analista</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th>{{$pedido->farmacia->nombre}}</th>
-							<th>{{$pedido->laboratorio->nombre}}</th>
-							<th>{{$forma_pago[$pedido->forma_pago]}}</th>
-							<th>{{$pedido->empleado->nombre}}</th>
+							<td class="text-center">{{$pedido->farmacia->nombre}}</th>
+							<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
+							<td class="text-center">{{$forma_pago[$pedido->forma_pago]}}</th>
+							<td class="text-center">{{$pedido->empleado->nombre}}</th>
 						</tr>
 					</tbody>
 				</table>
@@ -47,19 +47,19 @@ $forma_pago = array(
 				<table class="table" id="tmedicamento">
 					<thead>
 						<tr>
-							<th scope="col">Monodroga</th>
-							<th scope="col">Presentacion</th>
-							<th scope="col">Accion</th>
-							<th scope="col">Cantidad</th>
+							<th scope="col" class="text-center">Monodroga</th>
+							<th scope="col" class="text-center">Presentacion</th>
+							<th scope="col" class="text-center">Accion</th>
+							<th scope="col" class="text-center">Cantidad</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach($medicamentos as $medicamento)
 						<tr>
-							<th>{{$medicamento->medicamento->monodroga}}</th>
-							<th>{{$medicamento->medicamento->presentacion}}</th>
-							<th>{{$medicamento->medicamento->accion}}</th>
-							<th>{{$medicamento->cantidad}}</th>
+							<td class="text-center">{{$medicamento->medicamento->monodroga}}</th>
+							<td class="text-center">{{$medicamento->medicamento->presentacion}}</th>
+							<td class="text-center">{{$medicamento->medicamento->accion}}</th>
+							<td class="text-center">{{$medicamento->cantidad}}</th>
 						</tr>
 						@endforeach
 

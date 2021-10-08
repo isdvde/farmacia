@@ -18,35 +18,35 @@
 				<table class="table" id="templeado">
 					<thead>
 						<tr>
-							<th scope="col">CI</th>
-							<th scope="col">Farmacia</th>
-							<th scope="col">Nombre</th>
-							<th scope="col">Apellido</th>
-							<th scope="col">Edad</th>
-							<th scope="col">Cargo</th>
-							<th scope="col">Telefono</th>
-							<th scope="col"></th>
+							<th scope="col" class="text-center">CI</th>
+							<th scope="col" class="text-center">Farmacia</th>
+							<th scope="col" class="text-center">Nombre</th>
+							<th scope="col" class="text-center">Apellido</th>
+							<th scope="col" class="text-center">Edad</th>
+							<th scope="col" class="text-center">Cargo</th>
+							<th scope="col" class="text-center">Telefono</th>
+							<th scope="col" class="text-center"></th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach($empleados as $empleado)
 						<tr>
-							<th>{{$empleado->ci}}</th>
-							<th>{{$empleado->id_farmacia}}</th>
-							<th>{{$empleado->nombre}}</th>
-							<th>{{$empleado->apellido}}</th>
-							<th>{{$empleado->edad}}</th>
-							<th>{{$empleado->cargo}}</th>
-							<th>{{$empleado->telefono}}</th>
+							<td class="text-center">{{$empleado->ci}}</td>
+							<td class="text-center">{{$empleado->id_farmacia}}</td>
+							<td class="text-center">{{$empleado->nombre}}</td>
+							<td class="text-center">{{$empleado->apellido}}</td>
+							<td class="text-center">{{$empleado->edad}}</td>
+							<td class="text-center">{{$empleado->cargo}}</td>
+							<td class="text-center">{{$empleado->telefono}}</td>
 
-							<th class="col-1">
+							<td class="col-1">
 								<form action="{{url('empleado/delete')}}" method="POST">
 									@csrf
 									<a href="{{url('empleado/'.$empleado->ci.'/edit')}}" class="btn btn-info">Editar</a>
 									<input type="hidden" id="ci" name="ci" value="{{$empleado->ci}}">
 									<button type="submit" class="btn btn-danger">Eliminar</button>
 								</form>
-							</th>
+							</td>
 						</tr>
 						@endforeach
 

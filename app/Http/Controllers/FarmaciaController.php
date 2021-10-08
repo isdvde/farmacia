@@ -41,7 +41,6 @@ class FarmaciaController extends Controller
 
         $farmacias= new Farmacia();
 
-        $farmacias->id = $request->get('id');
         $farmacias->nombre = $request->get('nombre');
         $farmacias->ubicacion= $request->get('ubicacion');
 
@@ -85,7 +84,6 @@ class FarmaciaController extends Controller
     {
         $farmacia= Farmacia::find($id);
 
-        $farmacia->id = $request->get('id');
         $farmacia->nombre = $request->get('nombre');
         $farmacia->ubicacion= $request->get('ubicacion');
 

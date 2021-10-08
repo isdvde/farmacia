@@ -1,30 +1,43 @@
-@extends('layouts.plantillabase')
-@section('contenido')
+@extends('layouts.main')
+@section('content')
 
-<h2>CREAR REGISTRO</h2>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Laboratorios</h1>
+	</div>
+</div><!--/.row-->
 
-<form action="{{url('laboratorio/create')}}" method="POST">
-  @csrf
-  <div class="mb-3">
-      <label for="" class="form-label">id </label>
-      <input id="id" name="id" type="number" class="form-control">
-  </div>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form action="{{url('laboratorio/create')}}" method="POST">
+					@csrf
+					<div class="text-center">
+						<h4 class="h4">Informacion Principal</h4>
+					</div>
+					<div class="mb-3">
+						<label for="" class="form-label">Nombre</label>
+						<input id="nombre" name="nombre" type="text" class="form-control">
+					</div>
 
-  <div class="mb-3">
-      <label for="" class="form-label">nombre </label>
-      <input id="nombre" name="nombre" type="text" class="form-control">
-  </div>
+					<div class="mb-3">
+						<label for="" class="form-label">Direccion</label>
+						<input id="direccion" name="direccion" type="text" class="form-control">
+					</div>
 
-  <div class="mb-3">
-      <label for="" class="form-label">direccion</label>
-      <input id="direccion" name="direccion" type="text" class="form-control">
-  </div>
+					<div class="mb-3">
+						<label for="" class="form-label">Telefono</label>
+						<input id="telefono" name="telefono" type="text" class="form-control">
+					</div>
 
-  <div class="mb-3">
-      <label for="" class="form-label">telefono</label>
-      <input id="telefono" name="telefono" type="text" class="form-control">
-  </div>
-<a href="{{url('laboratorio')}}" class="btn btn-danger"> cancelar </a>
-<button type="submit" class="btn btn-primary"> guardar </button>
-</form>
+					<div class="text-center" style="margin-top: 10px;">
+						<button type="submit" class="btn btn-primary"> Guardar </button>
+						<a href="{{url('laboratorio')}}" class="btn btn-danger"> Cancelar </a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
