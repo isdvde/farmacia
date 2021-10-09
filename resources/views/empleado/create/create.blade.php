@@ -39,6 +39,8 @@
 							<h4 class="h4">Informacion de Pasantia</h4>
 						</div>
 						@include('empleado.create.pasante')
+					</div>
+					<div id="secResp" style="display: none" class="mb-3">
 						<div class="text-center">
 							<h4 class="h4">Informacion de Responsable</h4>
 						</div>
@@ -49,7 +51,6 @@
 					<div class="text-center" style="margin-top: 10px;">
 						<button type="submit" class="btn btn-primary">Guardar</button>
 						<a href="{{url('empleado')}}" class="btn btn-danger">Cancelar</a>
-						<a href="{{url('empleado/show')}}" class="btn btn-danger">Cancelar</a>
 					</div>
 				</form>
 			</div>
@@ -58,20 +59,36 @@
 </div>
 
 <script>
-	var c = document.getElementById("cargo");
-	c.addEventListener("change", function() {
-		var f = document.getElementById("secFarma");
-		var p = document.getElementById("secPasante");
-		f.style.display = "none";
-		p.style.display = "none";
-		if(c.value == "farmaceutico") {
-			f.style.display = "block";
-		} else if( c.value == "pasante") {
-			p.style.display = "block";
-		} else {
-			f.style.display = "none";
-			p.style.display = "none";
-		}
+	$(document).ready(function() {
+		$('#cargo').change(function(event) {
+			var f = $('#secFarma');
+			var p = $('#secPasante');
+			var r = $('#secResp');
+			var e = $('#edad');
+			f.hide();
+			p.hide();
+			r.hide();
+
+			if($(this).val() == 'farmaceutico') {
+				f.show();
+			} else if($(this).val() == 'pasante') {
+				p.show();
+				if(e.val() != '' && e.val() <= 17) {
+					r.show();
+				}
+				e.change(function(event) {
+					if($(this).val() != '' && $(this).val() <= 17) {
+						r.show();
+					} else {
+						r.hide();
+					}
+				});
+			} else {
+				f.hide();
+				p.hide();
+				r.hide();
+			}
+		});
 	});
 </script>
 
