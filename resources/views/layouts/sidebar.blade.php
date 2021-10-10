@@ -4,7 +4,7 @@
 			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
 		</div>
 		<div class="profile-usertitle">
-			<div class="profile-usertitle-name">Margarita</div>
+			<div class="profile-usertitle-name">{{ auth()->user()->empleado->nombre }}</div>
 			<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 		</div>
 		<div class="clear"></div>
@@ -176,11 +176,19 @@
 
 
 
-	<li>
+{{-- 	<li>
 		<a href="{{ url('logout') }}"><em class="fa fa-power-off">&nbsp;</em> Salir
 		</a>
-	</li>
+	</li> --}}
 
+{{-- 	<li>
+	<form action="{{ url('logout') }}" method="POST">
+		@csrf
+		<button type="submit" class="btn btn-danger"><em class="fa fa-power-off">&nbsp;</em> Salir
+		</button>
+	</form>
+	</li> --}}
 
 </ul>
 </div><!--/.sidebar-->
+
