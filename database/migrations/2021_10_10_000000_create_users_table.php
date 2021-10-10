@@ -17,7 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username');
             $table->string('password');
-            $table->string('ci_empleado');
+            $table->integer('ci');
+            $table->foreign('ci')->references('ci')->on('empleados')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
             $table->rememberToken();
             $table->timestamps();
         });

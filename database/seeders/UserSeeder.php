@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Empleado;
 
 class UserSeeder extends Seeder
 {
@@ -13,6 +15,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
+    	foreach (Empleado::all() as $empleado) {
+    		User::factory()->create([
+    			'username' => $empleado->nombre,
+    			'ci' => $empleado->ci,
+    		]);
+    	}
+        
     }
 }

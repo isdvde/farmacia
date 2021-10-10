@@ -19,10 +19,10 @@ use App\Http\Controllers\LaboratorioController;
 |
 */
 
-Auth::routes();
 
+	Auth::routes();
 
-Route::prefix('/')->group(function() {
+Route::prefix('/')->middleware('auth')->group(function() {
 
 	Route::get('/', function(){
 		return view('home');

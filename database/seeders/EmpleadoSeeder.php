@@ -18,11 +18,26 @@ class EmpleadoSeeder extends Seeder
 	 */
 	public function run()
 	{
-		$empleado = Empleado::factory()->create([
+		Empleado::factory()->create([
 			'ci' => 1,
 			'nombre' => 'admin',
 			'apellido' => 'admin',
 		]);
+
+		Empleado::factory()->create([
+			'ci' => 2,
+			'nombre' => 'margarita',
+			'apellido' => 'margarita',
+		]);
+
+
+		Empleado::factory()->create([
+			'ci' => 3,
+			'nombre' => 'adrian',
+			'apellido' => 'adrian',
+		]);
+
+
 
 		for ($i=0; $i < 100; $i++) { 
 			

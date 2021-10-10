@@ -88,7 +88,7 @@ class Empleado extends Model
 
 	public function user()
 	{
-		return $this->hasOne('App\Models\User', 'ci_empleado', 'ci');
+		return $this->hasOne('App\Models\User', 'ci', 'ci');
 	}
 
 	public function delete()
