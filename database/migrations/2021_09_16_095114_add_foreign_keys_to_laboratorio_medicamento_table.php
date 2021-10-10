@@ -14,8 +14,14 @@ class AddForeignKeysToLaboratorioMedicamentoTable extends Migration
     public function up()
     {
         Schema::table('laboratorio_medicamento', function (Blueprint $table) {
-            $table->foreign('id_laboratorio', 'laboratorio_medicamento_fk')->references('id')->on('laboratorios');
-            $table->foreign('id_medicamento', 'laboratorio_medicamento_fk_1')->references('id')->on('medicamentos');
+            $table->foreign('id_laboratorio', 'laboratorio_medicamento_fk')->references('id')->on('laboratorios')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            $table->foreign('id_medicamento', 'laboratorio_medicamento_fk_1')->references('id')->on('medicamentos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

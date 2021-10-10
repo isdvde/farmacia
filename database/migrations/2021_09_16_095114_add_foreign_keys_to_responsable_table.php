@@ -14,7 +14,10 @@ class AddForeignKeysToResponsableTable extends Migration
     public function up()
     {
         Schema::table('responsable', function (Blueprint $table) {
-            $table->foreign('ci', 'responsable_ibfk_1')->references('ci')->on('pasantias');
+            $table->foreign('ci', 'responsable_ibfk_1')->references('ci')->on('pasantias')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

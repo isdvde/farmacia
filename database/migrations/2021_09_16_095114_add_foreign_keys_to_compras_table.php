@@ -14,7 +14,10 @@ class AddForeignKeysToComprasTable extends Migration
     public function up()
     {
         Schema::table('compras', function (Blueprint $table) {
-            $table->foreign('id_pedido', 'compras_fk')->references('id')->on('pedidos');
+            $table->foreign('id_pedido', 'compras_fk')->references('id')->on('pedidos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

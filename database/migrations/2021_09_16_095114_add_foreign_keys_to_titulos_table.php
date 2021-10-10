@@ -14,7 +14,10 @@ class AddForeignKeysToTitulosTable extends Migration
     public function up()
     {
         Schema::table('titulos', function (Blueprint $table) {
-            $table->foreign('ci', 'titulos_ibfk_1')->references('ci')->on('empleados');
+            $table->foreign('ci', 'titulos_ibfk_1')->references('ci')->on('empleados')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

@@ -32,7 +32,7 @@
 						@foreach($empleados as $empleado)
 						<tr>
 							<td class="text-center">{{$empleado->ci}}</td>
-							<td class="text-center">{{$empleado->id_farmacia}}</td>
+							<td class="text-center">{{$empleado->farmacia->nombre}}</td>
 							<td class="text-center">{{$empleado->nombre}}</td>
 							<td class="text-center">{{$empleado->apellido}}</td>
 							<td class="text-center">{{$empleado->edad}}</td>

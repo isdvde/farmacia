@@ -14,8 +14,14 @@ class AddForeignKeysToInventarioTable extends Migration
     public function up()
     {
         Schema::table('inventario', function (Blueprint $table) {
-            $table->foreign('id_farmacia', 'inventario_fk')->references('id')->on('farmacias');
-            $table->foreign('id_medicamento', 'inventario_fk_1')->references('id')->on('medicamentos');
+            $table->foreign('id_farmacia', 'inventario_fk')->references('id')->on('farmacias')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            $table->foreign('id_medicamento', 'inventario_fk_1')->references('id')->on('medicamentos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

@@ -32,7 +32,7 @@
 
 					<div class="mb-3">
 						<label for="" class="form-label">Precio</label>
-						<input id="precio" name="precio" type="text" class="form-control" value="{{$medicamento->precio}}">
+						<input id="precio" name="precio" type="number" class="form-control" value="{{$medicamento->precio}}">
 					</div>
 					<div class="text-center" style="margin-top: 10px;">
 						<button type="submit" class="btn btn-primary">Guardar</button>

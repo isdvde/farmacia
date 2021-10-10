@@ -17,9 +17,9 @@
 						<tr>
 							<th scope="col" class="text-center">ID</th>
 							<th scope="col" class="text-center">Farmacia</th>
-							<th scope="col" class="text-center">Medicaento</th>
+							<th scope="col" class="text-center">Medicamento</th>
 							<th scope="col" class="text-center">Cantidad</th>
-							<th scope="col" class="text-center"></th>
+{{-- 							<th scope="col" class="text-center"></th> --}}
 						</tr>
 					</thead>
 
@@ -32,10 +32,10 @@
 							<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
 							<td class="text-center">{{$inventario->cantidad}}</td>
 
-							<td class="col-1 text-center">
+{{-- 							<td class="col-1 text-center">
 								<a class="btn btn-info">Editar</a>
 								<button class="btn btn-danger">Borrar</button>
-							</td>
+							</td> --}}
 						</tr>
 
 						@endforeach

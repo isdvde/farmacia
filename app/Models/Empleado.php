@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 
 /**
@@ -21,6 +22,7 @@ use Illuminate\Http\Request;
  */
 class Empleado extends Model
 {
+	use HasFactory;
 	/**
 	 * The primary key for the model.
 	 * 
@@ -82,6 +84,11 @@ class Empleado extends Model
 	public function responsable()
 	{
 		return $this->hasOne('App\Models\Responsable', 'ci', 'ci');
+	}
+
+	public function user()
+	{
+		return $this->hasOne('App\Models\User', 'ci_empleado', 'ci');
 	}
 
 	public function delete()

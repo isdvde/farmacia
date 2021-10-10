@@ -3,6 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Farmacia;
+use App\Models\Empleado;
+use App\Models\Medicamento;
+use App\Models\Laboratorio;
+use App\Models\Inventario;
+use App\Models\Pedido;
+use App\Models\PedidoMedicamento;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,7 +20,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RoleSeeder::class);
         // \App\Models\User::factory(10)->create();
+        Farmacia::factory(15)->create();
+/*        Empleado::factory(100)->create();*/
+        Medicamento::factory(200)->create();
+        Laboratorio::factory(30)->create();
+        Inventario::factory(500)->create();
+        $this->call(EmpleadoSeeder::class);
+        $this->call(PedidoSeeder::class);
     }
 }
