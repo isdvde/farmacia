@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Empleado;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -16,11 +17,19 @@ class UserSeeder extends Seeder
     public function run()
     {
     	foreach (Empleado::all() as $empleado) {
-    		User::factory()->create([
-    			'username' => $empleado->nombre,
-    			'ci' => $empleado->ci,
-    		]);
-    	}
+
+            for($i=1;; $i++) { 
+                $username = strtolower(substr($empleado->nombre, 0, $i).$empleado->apellido);
+                if (!(User::where('username',$username)->first())) {
+                    break;
+                }
+            }
+            User::factory()->create([
+             'username' => $username,
+             'password' => Hash::make($username),
+             'ci' => $empleado->ci,
+         ]);
+        }
         
     }
 }

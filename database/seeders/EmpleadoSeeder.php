@@ -20,21 +20,21 @@ class EmpleadoSeeder extends Seeder
 	{
 		Empleado::factory()->create([
 			'ci' => 1,
-			'nombre' => 'admin',
+			'nombre' => '',
 			'apellido' => 'admin',
 		]);
 
 		Empleado::factory()->create([
 			'ci' => 2,
-			'nombre' => 'margarita',
-			'apellido' => 'margarita',
+			'nombre' => 'Margarita',
+			'apellido' => 'Garcia',
 		]);
 
 
 		Empleado::factory()->create([
 			'ci' => 3,
-			'nombre' => 'adrian',
-			'apellido' => 'adrian',
+			'nombre' => 'Adrian',
+			'apellido' => 'Moreno',
 		]);
 
 

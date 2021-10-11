@@ -7,7 +7,9 @@ use App\Models\Pasantia;
 use App\Models\Responsable;
 use App\Models\Titulo;
 use App\Models\Farmacia;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -103,6 +105,18 @@ class EmpleadoController extends Controller
 			]);
 		}
 
+		for($i=1;; $i++) { 
+			$username = strtolower(substr($request->nombre, 0, $i).$request->apellido);
+			if (!(User::where('username',$username)->first())) {
+				break;
+			}
+		}
+
+		Empleado::find($request->ci)->user()->create([
+			'ci' => $request->ci,
+			'username' => $username,
+			'password' => Hash::make($username),
+		]);
 
 
 
