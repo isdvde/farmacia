@@ -36,7 +36,7 @@
 							<td class="text-center">{{$empleado->nombre}}</td>
 							<td class="text-center">{{$empleado->apellido}}</td>
 							<td class="text-center">{{$empleado->edad}}</td>
-							<td class="text-center">{{$cargos[$empleado->cargo]}}</td>
+							<td class="text-center">{{ucfirst($empleado->cargo)}}</td>
 							<td class="text-center">{{$empleado->telefono}}</td>
 
 							<td class="col-1">

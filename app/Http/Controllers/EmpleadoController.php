@@ -21,16 +21,8 @@ class EmpleadoController extends Controller
 	 */
 	public function index()
 	{
-		$cargos = [
-			"pasante" => 'Pasante',
-			"administrativo" => 'Administrativo',
-			"farmaceutico" => 'Farmaceutico',
-			"vigilante" => 'Vigilante',
-			"analista" => 'Analista',
-		];
 		return view('empleado.index')
-		->with('empleados', Empleado::all())
-		->with('cargos', $cargos);
+		->with('empleados', Empleado::all());
 	}
 
 	/**

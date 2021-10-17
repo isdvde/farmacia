@@ -1,11 +1,19 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<div class="profile-sidebar">
 		<div class="profile-userpic">
-			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
+{{-- 			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt=""> --}}
+			<img src="{{ url('img/user.png') }}" class="img-responsive" alt="">
 		</div>
 		<div class="profile-usertitle">
-			<div class="profile-usertitle-name">{{ auth()->user()->empleado->nombre }}</div>
-			<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			<div class="profile-usertitle-name">
+				{{ Auth::user()->empleado->nombre.' '.Auth::user()->empleado->apellido }}
+			</div>
+			<div class="profile-usertitle-status">
+				<span class="indicator label-success"></span>
+				Online <br>
+				<span class="fa fa-user">&nbsp;&nbsp;</span>
+				{{ Auth::user()->empleado->cargo }}
+			</div>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -187,7 +195,7 @@
 		<button type="submit" class="btn btn-danger"><em class="fa fa-power-off">&nbsp;</em> Salir
 		</button>
 	</form>
-	</li> --}}
+</li> --}}
 
 </ul>
 </div><!--/.sidebar-->

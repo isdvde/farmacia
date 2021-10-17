@@ -37,9 +37,6 @@
 									Entrar
 								</button>
 							</div>
-							{{-- <div class="mt-4 text-center">
-								<a href="{{ url('register') }}">Registrarse</a>
-							</div> --}}
 						</form>
 					</div>
 				</div>

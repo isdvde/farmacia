@@ -32,7 +32,9 @@
 							<td class="text-center">{{$pedido->id}}</th>
 							<td class="text-center">{{$pedido->farmacia->nombre}}</th>
 							<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
-							<td class="text-center">{{$pedido->empleado->nombre}}</th>
+							<td class="text-center">
+								{{$pedido->empleado->nombre.' '.$pedido->empleado->apellido }}
+							</th>
 							<td class="text-center">{{$pedido->forma_pago}}</th>
 
 							<td class="text-center" class="col-1 text-center">
