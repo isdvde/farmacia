@@ -54,7 +54,7 @@
 
 
 	{{-- INICIO SECCION FARMACIA --}}
-	<li class="parent @if(preg_match('#farmacia.*#',Request::path())) active @endif">
+{{-- 	<li class="parent @if(preg_match('#farmacia.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#farmaciaItem">
 			<em class="	fa fa-home">&nbsp;&nbsp;</em> 
 			Farmacias 
@@ -74,7 +74,14 @@
 				</a>
 			</li>
 		</ul>
+	</li> --}}
+
+	<li @if(Request::is('farmacia'))class="active"@endif>
+		<a href="{{ url('farmacia') }}">
+			<em class="	fa fa-home">&nbsp;</em> Farmacias
+		</a>
 	</li>
+
 	{{-- FIN SECCION FARMACIA --}}
 
 	{{-- INICIO SECCION EMPLEADO --}}
@@ -127,7 +134,7 @@
 	{{-- FIN SECCION PEDIDO --}}
 
 	{{-- INICIO SECCION LABORATORIO --}}
-	<li class="parent @if(preg_match('#laboratorio.*#',Request::path())) active @endif">
+{{-- 	<li class="parent @if(preg_match('#laboratorio.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#laboratorioItem">
 			<em class="	fa fa-truck">&nbsp;&nbsp;</em> 
 			Laboratorios 
@@ -147,7 +154,14 @@
 				</a>
 			</li>
 		</ul>
+	</li> --}}
+
+	<li @if(Request::is('laboratorio'))class="active"@endif>
+		<a href="{{ url('laboratorio') }}">
+			<em class="	fa fa-home">&nbsp;</em> Laboratorios
+		</a>
 	</li>
+
 	{{-- FIN SECCION LABORATORIO --}}
 
 	{{-- INICIO SECCION INVENTARIO --}}
@@ -159,7 +173,7 @@
 	{{-- FIN SECCION INVENTTARIO --}}
 
 	{{-- INICIO SECCION MEDICAMENTO --}}
-	<li class="parent @if(preg_match('#medicamento.*#',Request::path())) active @endif">
+	{{-- <li class="parent @if(preg_match('#medicamento.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#medicamentoItem">
 			<em class="fa fa-heartbeat">&nbsp;&nbsp;</em> 
 			Medicamentos 
@@ -179,6 +193,12 @@
 				</a>
 			</li>
 		</ul>
+	</li> --}}
+
+	<li @if(Request::is('medicamento'))class="active"@endif>
+		<a href="{{ url('medicamento') }}">
+			<em class="	fa fa-home">&nbsp;</em> Medicamentos
+		</a>
 	</li>
 	{{-- FIN SECCION MEDCAMENTO --}}
 
