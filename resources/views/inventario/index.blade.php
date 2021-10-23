@@ -1,7 +1,9 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="row">
+<livewire:inventario-component/>
+
+{{-- <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Inventario</h1>
 	</div>
@@ -19,7 +21,6 @@
 							<th scope="col" class="text-center">Farmacia</th>
 							<th scope="col" class="text-center">Medicamento</th>
 							<th scope="col" class="text-center">Cantidad</th>
-{{-- 							<th scope="col" class="text-center"></th> --}}
 						</tr>
 					</thead>
 
@@ -32,10 +33,6 @@
 							<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
 							<td class="text-center">{{$inventario->cantidad}}</td>
 
-{{-- 							<td class="col-1 text-center">
-								<a class="btn btn-info">Editar</a>
-								<button class="btn btn-danger">Borrar</button>
-							</td> --}}
 						</tr>
 
 						@endforeach
@@ -45,12 +42,12 @@
 			</div>
 		</div>
 	</div>
-</div>
-<script src="{{ url('lumino/js/datatables.min.js') }}"></script>
+</div> --}}
+{{-- <script src="{{ url('lumino/js/datatables.min.js') }}"></script>
 <script>
 	$(document).ready( function () {
 		$('#tinventario').DataTable();
 	} );
-</script>
+</script> --}}
 
 @endsection

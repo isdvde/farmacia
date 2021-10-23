@@ -52,18 +52,6 @@ class EmpleadoComponent extends Component
 		$this->dispatchBrowserEvent('closeEditForm');
 	}
 
-	public function openForm($type, Empleado $empleado = null) {
-		$this->reset();
-		$this->formType = $type;
-		if($empleado != null) $this->loadData($empleado);
-		$this->dispatchBrowserEvent('openForm');
-	}
-
-	public function closeForm() {
-		$this->reset();
-		$this->dispatchBrowserEvent('closeForm');
-	}
-
 	public function loadData(Empleado $empleado){
 
 		$this->ci = $empleado->ci;
@@ -108,7 +96,6 @@ class EmpleadoComponent extends Component
 	public function store() {
 
 		if($this->formType == 0) {
-
 			Empleado::create([
 				'ci' => $this->ci,
 				'id_farmacia' => $this->farmacia,
@@ -133,7 +120,6 @@ class EmpleadoComponent extends Component
 			if($this->cargo == "pasante") {
 				$this->edad < 18 ? $minoria = true : $minoria = false;
 				$this->activo == "1" ? $activo = true : $activo = false;
-
 				Empleado::find($this->ci)->pasantia()->create([
 					'ci' => $this->ci,
 					'institucion' => $this->institucion,
@@ -171,7 +157,6 @@ class EmpleadoComponent extends Component
 			$this->closeCreate();
 
 		} else if($this->formType == 1) {
-
 			Empleado::find($this->ci)->update([
 				'id_farmacia' => $this->farmacia,
 				'nombre' => $this->nombre,
@@ -194,7 +179,6 @@ class EmpleadoComponent extends Component
 			if($this->cargo == "pasante") {
 				$this->edad < 18 ? $minoria = true : $minoria = false;
 				$this->activo == "1" ? $activo = true : $activo = false;
-
 				Empleado::find($this->ci)->pasantia()->update([
 					'institucion' => $this->institucion,
 					'especialidad' => $this->especialidad,

@@ -116,7 +116,7 @@
 	{{-- FIN SECCION EMPLEADO --}}
 
 	{{-- INICIO SECCION PEDIDO --}}
-	<li class="parent @if(preg_match('#pedido.*#',Request::path())) active @endif">
+	{{-- <li class="parent @if(preg_match('#pedido.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#pedidoItem">
 			<em class="fa fa-list-alt">&nbsp;&nbsp;</em> 
 			Pedidos 
@@ -136,7 +136,7 @@
 				</a>
 			</li>
 		</ul>
-	</li>
+	</li> --}}
 	{{-- FIN SECCION PEDIDO --}}
 
 	{{-- INICIO SECCION LABORATORIO --}}
@@ -171,7 +171,7 @@
 	{{-- FIN SECCION LABORATORIO --}}
 
 	{{-- INICIO SECCION INVENTARIO --}}
-	<li>
+	<li @if(Request::is('inventario'))class="active"@endif>
 		<a href="{{ url('inventario') }}">
 			<em class="	fa fa-database">&nbsp;</em> Inventario
 		</a>

@@ -48,6 +48,5 @@
 {{-- Telefono --}}
 <div class="mb-3">
 	<label class="form-label">Telefono</label>
-	<input type="number" class="form-control" id="telefono" wire:model.defer="telefono" 
-	value="{{ $telefono }}">
+	<input type="text" class="form-control" id="telefono" wire:model.defer="telefono">
 </div>
