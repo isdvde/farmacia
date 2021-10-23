@@ -4,6 +4,7 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>Farmacia</title>
+	<link href="{{ url('css/bootstrap-custom.css') }}" rel="stylesheet"/>
 	<link href="{{ url('lumino/css/bootstrap.min.css') }}" rel="stylesheet"/>
 	<link href="{{ url('lumino/css/font-awesome.min.css') }}" rel="stylesheet"/>
 	<link href="{{ url('lumino/css/datepicker3.css') }}" rel="stylesheet"/>

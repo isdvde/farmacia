@@ -42,8 +42,10 @@
 					<div class="col-2 text-center">
 						<button wire:click.prevent="openForm({{0}})" class="btn btn-primary">Añadir</button>
 
-						<div class="col-2 text-right">
-							{{ $medicamentos->links() }}
+						<div class="bootstrap-iso">
+							<div class="col-2 text-right">
+								{{ $medicamentos->links() }}
+							</div>
 						</div>
 
 					</div>

@@ -20,7 +20,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('apellido', 45)->nullable();
             $table->integer('edad')->nullable();
             $table->string('cargo', 45)->nullable();
-            $table->string('telefono', 45)->nullable();
+            $table->string('telefono', 60)->nullable();
         });
     }
 

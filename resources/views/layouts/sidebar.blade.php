@@ -85,7 +85,7 @@
 	{{-- FIN SECCION FARMACIA --}}
 
 	{{-- INICIO SECCION EMPLEADO --}}
-	<li class="parent @if(preg_match('#empleado.*#',Request::path())) active @endif">
+{{-- 	<li class="parent @if(preg_match('#empleado.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#empleadoItem">
 			<em class="fa fa-user">&nbsp;&nbsp;</em>
 			Empleados 
@@ -105,6 +105,12 @@
 				</a>
 			</li>
 		</ul>
+	</li> --}}
+
+	<li @if(Request::is('empleado'))class="active"@endif>
+		<a href="{{ url('empleado') }}">
+			<em class="	fa fa-user">&nbsp;</em> Empleados
+		</a>
 	</li>
 
 	{{-- FIN SECCION EMPLEADO --}}
@@ -158,7 +164,7 @@
 
 	<li @if(Request::is('laboratorio'))class="active"@endif>
 		<a href="{{ url('laboratorio') }}">
-			<em class="	fa fa-home">&nbsp;</em> Laboratorios
+			<em class="	fa fa-truck">&nbsp;</em> Laboratorios
 		</a>
 	</li>
 
@@ -197,7 +203,7 @@
 
 	<li @if(Request::is('medicamento'))class="active"@endif>
 		<a href="{{ url('medicamento') }}">
-			<em class="	fa fa-home">&nbsp;</em> Medicamentos
+			<em class="	fa fa-heartbeat">&nbsp;</em> Medicamentos
 		</a>
 	</li>
 	{{-- FIN SECCION MEDCAMENTO --}}

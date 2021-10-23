@@ -10,7 +10,7 @@ class FarmaciaComponent extends Component
 {
 	use WithPagination;
 
-/*    protected $paginationTheme = 'bootstrap';*/
+    protected $paginationTheme = 'bootstrap';
 	public $formType;
 	public $farmacia, $nombre, $ubicacion;
 	protected $rules = [
