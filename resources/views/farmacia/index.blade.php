@@ -34,6 +34,7 @@
 
 								<form action="{{url('farmacia/delete')}}"  method="POST">
 									@csrf
+                                    <a href="{{url('farmacia/'.$farmacia->id.'/show')}}" class="btn btn-success">Ver</a>
 									<a href="{{url('farmacia/'.$farmacia->id.'/edit')}}" class="btn btn-info">Editar</a>
 									<input type="hidden" id="id" name="id" value="{{$farmacia->id}}">
 									<button type="submit" class="btn btn-danger">Borrar</button>

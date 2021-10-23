@@ -58,4 +58,4 @@ $forma_pago = array(
 </div>
 
 {{-- VALORES DE PRUEBA --}}
-<input type="hidden" name="id_empleado" value="764">
+<input type="hidden" name="id_empleado" value="8383883">

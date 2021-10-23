@@ -16,8 +16,8 @@
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">ID</th>
-							<th scope="col" class="text-center">Farmacia</th>
-							<th scope="col" class="text-center">Medicaento</th>
+							<th scope="col" class="text-center">nombre</th>
+							<th scope="col" class="text-center">monodroga</th>
 							<th scope="col" class="text-center">Cantidad</th>
 							<th scope="col" class="text-center"></th>
 						</tr>
@@ -27,8 +27,8 @@
 						@foreach ( $inventarios as $inventario )
 
 						<tr>
-							<td class="text-center">{{$inventario->id}}</td>
-							<td class="text-center">{{$inventario->farmacia->nombre}}</td>
+							<td class="text-center">{{$inventario->medicamento->id}}</td>
+							<td class="text-center">{{$inventario->medicamento->nombre}}</td>
 							<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
 							<td class="text-center">{{$inventario->cantidad}}</td>
 

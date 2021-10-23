@@ -23,7 +23,7 @@ class CompraMedicamento extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_compra', 'id_medicamento'];
+    protected $fillable = ['id_compra', 'id_medicamento','cantidad'];
 
     /**
      * Indicates if the model should be timestamped.

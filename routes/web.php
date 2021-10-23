@@ -7,7 +7,7 @@ use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\LaboratorioController;
-
+use App\Http\Controllers\CompraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,12 +48,6 @@ Route::prefix('pedido')->group(function() {
 });
 
 
-//farmacias
-Route::get('farmacias',[farmaciaController::class,'index' ]);
-
-Route::get('farmacias/create',[farmaciaController::class,'create' ] );
-
-Route::get('farmacias/{farmacia}', [farmaciaController::class,'show' ]);
 
 //laboratorio
 Route::prefix('laboratorio')->group(function(){
@@ -71,7 +65,7 @@ Route::prefix('laboratorio')->group(function(){
 Route::prefix('inventario')->group(function(){
 
     Route::get('/',[InventarioController::class,'index' ]);
-   
+
 });
 
 //medicamento
@@ -86,18 +80,6 @@ Route::prefix('medicamento')->group(function(){
 
 });
 
-//pedido
-Route::prefix('pedido')->group(function(){
-
-    Route::get('/',[PedidoController::class,'index' ]);
-    Route::get('create',[PedidoController::class,'create' ]);
-    Route::post('create',[PedidoController::class,'store' ]);
-    Route::get('{id}/edit',[PedidoController::class,'edit' ]);
-    Route::post('{id}/edit',[PedidoController::class,'update' ]);
-    Route::post('delete',[PedidoController::class,'delete' ]);
-
-});
-
 //farmacia
 Route::prefix('farmacia')->group(function(){
 
@@ -107,5 +89,15 @@ Route::prefix('farmacia')->group(function(){
     Route::get('{id}/edit',[FarmaciaController::class,'edit' ]);
     Route::post('{id}/edit',[FarmaciaController::class,'update' ]);
     Route::post('delete',[FarmaciaController::class,'delete' ]);
+    Route::get('{id}/show', [FarmaciaController::class,'show' ]);
+});
+//compra
+Route::prefix('compra')->group(function(){
 
+    Route::get('/',[CompraController::class,'index' ]);
+    Route::get('{id}/create',[CompraController::class,'create' ] );
+    Route::post('create',[CompraController::class,'store' ]);
+    Route::get('{id}/edit',[CompraController::class,'edit' ]);
+    Route::post('{id}/edit',[CompraController::class,'update' ]);
+    Route::get('{id}/show', [CompraController::class,'show' ]);
 });

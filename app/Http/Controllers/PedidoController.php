@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Laboratorio;
 use App\Models\Farmacia;
+use App\Models\Compra;
 use App\Models\Medicamento;
 
 class PedidoController extends Controller
