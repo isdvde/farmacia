@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventario;
-
+use App\Models\Farmacia;
+use App\Models\Medicamento;
 class InventarioController extends Controller
 {
     /**

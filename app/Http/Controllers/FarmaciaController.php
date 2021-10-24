@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Farmacia;
+use App\Models\Empleado;
+use App\Models\Pedido;
+use App\Models\Laboratorio;
 use Illuminate\Http\Request;
 
 class FarmaciaController extends Controller
@@ -52,12 +55,18 @@ class FarmaciaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Farmacia  $farmacia
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Farmacia $farmacia)
+    public function show($id)
     {
-        //
+        return view('farmacia.show')
+		->with('farmacia',Farmacia::find($id))
+		->with('empleados',Farmacia::find($id)->empleados)
+        ->with('pedidos',Farmacia::find($id)->pedidos)
+        ->with('laboratorios',Farmacia::find($id)->laboratorios)
+        ;
+
     }
 
     /**

@@ -27,8 +27,8 @@
 						@foreach ( $inventarios as $inventario )
 
 						<tr>
-							<td class="text-center">{{$inventario->id}}</td>
-							<td class="text-center">{{$inventario->farmacia->nombre}}</td>
+							<td class="text-center">{{$inventario->medicamento->id}}</td>
+							<td class="text-center">{{$inventario->medicamento->nombre}}</td>
 							<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
 							<td class="text-center">{{$inventario->cantidad}}</td>
 

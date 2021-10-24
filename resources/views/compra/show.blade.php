@@ -11,40 +11,46 @@ $forma_pago = array(
 	'30d' => 'Credito 30 dias',
 )
 @endphp
-
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Pedidos</h1>
+		<h1 class="page-header">compra</h1>
 	</div>
-</div><!--/.row-->
+</div>
 
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			{{-- <div class="panel-heading">
-				Empleados
-			</div> --}}
+		
 			<div class="panel-body">
-				<table class="table">
+
+                   <table class="table">
 					<thead>
 						<tr>
-							<th scope="col" class="text-center">Farmacia</th>
+							<th scope="col" class="text-center">id</th>
+							<th scope="col" class="text-center">id pedido</th>
+							<th scope="col" class="text-center">vencimiento</th>
+							<th scope="col" class="text-center">cancelado</th>
+                            <th scope="col" class="text-center">Farmacia</th>
 							<th scope="col" class="text-center">Laboratorio</th>
-							<th scope="col" class="text-center">Metodo de Pago</th>
 							<th scope="col" class="text-center">Analista</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td class="text-center">{{$pedido->farmacia->nombre}}</th>
-							<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
-							<td class="text-center">{{$forma_pago[$pedido->forma_pago]}}</th>
-							<td class="text-center">{{$pedido->empleado->nombre}}</th>
+							<td class="text-center">{{$compra->id}}</th>
+							<td class="text-center">{{$compra->id_pedido}}</th>
+							<td class="text-center">{{$compra->vencimiento}}</th>
+                            <td class="text-center">{{$compra->cancelado}}</th>
+                            <td class="text-center">{{$compra->pedido->farmacia->nombre}}</th>
+							<td class="text-center">{{$compra->pedido->laboratorio->nombre}}</th>
+							<td class="text-center">{{$compra->pedido->empleado->nombre}}</th>
 						</tr>
 					</tbody>
 				</table>
 
-				<table class="table" id="tmedicamento">
+            
+
+                <table class="table" id="tmedicamento">
 					<thead>
 						<tr>
 							<th scope="col" class="text-center">Monodroga</th>
@@ -56,24 +62,24 @@ $forma_pago = array(
 					<tbody>
 						@foreach($medicamentos as $medicamento)
 						<tr>
-							<td class="text-center">{{$medicamento->medicamento->monodroga}}</th>
+							<td class="text-center">{{$medicamento->id_medicamento}}</th>
 							<td class="text-center">{{$medicamento->medicamento->presentacion}}</th>
 							<td class="text-center">{{$medicamento->medicamento->accion}}</th>
-							<td class="text-center">{{$medicamento->cantidad}}</th>
+							<td class="text-center">{{$medicamento->medicamento->cantidad}}</th>
 						</tr>
 						@endforeach
 
 					</tbody>
 				</table>
+
 					<div class="col-2">
-						<a href="{{url('pedido/'.$pedido->id.'/edit')}}" class="btn btn-primary">Editar</a>
-                        <a href="{{url('compra/'.$pedido->id.'/create')}}" class="btn btn-info">comprar</a>
-						<a href="{{url('pedido')}}" class="btn btn-danger">Regresar</a>
+						<a href="{{url('compra')}}" class="btn btn-danger">Regresar</a>
 					</div>
 			</div>
 		</div>
 
 	</div>
+
 </div>
 
 <script src="{{ url('lumino/js/datatables.min.js') }}"></script>
@@ -82,4 +88,6 @@ $forma_pago = array(
 		$('#tmedicamento').DataTable();
 	} );
 </script>
+
+
 @endsection
