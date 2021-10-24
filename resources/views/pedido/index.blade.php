@@ -2,7 +2,9 @@
 @section('content')
 
 
-<div class="row">
+<livewire:pedido-component/>
+
+{{-- <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Pedidos</h1>
 	</div>
@@ -11,9 +13,6 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel panel-default">
-			{{-- <div class="panel-heading">
-				Empleados
-			</div> --}}
 			<div class="panel-body">
 				<table class="table" id="tpedido">
 					<thead>
@@ -54,14 +53,14 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --}}
 
-
+{{-- 
 <script src="{{ url('lumino/js/datatables.min.js') }}"></script>
 <script>
 	$(document).ready( function () {
 		$('#tpedido').DataTable();
 	} );
-</script>
+</script> --}}
 @endsection
 

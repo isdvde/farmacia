@@ -137,6 +137,12 @@
 			</li>
 		</ul>
 	</li> --}}
+	<li @if(Request::is('pedido'))class="active"@endif>
+		<a href="{{ url('pedido') }}">
+			<em class="	fa fa-list-alt">&nbsp;</em> Pedidos
+		</a>
+	</li>
+
 	{{-- FIN SECCION PEDIDO --}}
 
 	{{-- INICIO SECCION LABORATORIO --}}
