@@ -215,7 +215,7 @@
 	{{-- FIN SECCION MEDICAMENTO --}}
 
 {{-- INICIO SECCION COMPRA--}}
-	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
+{{-- 	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#compraItem">
 			<em class="fa fa-money">&nbsp;&nbsp;</em>
 			compra
@@ -230,7 +230,13 @@
 				</a>
 			</li>
 		</ul>
-	</li>
+	</li> --}}
+
+	<li @if(Request::is('compra'))class="active"@endif>
+		<a href="{{ url('compra') }}">
+			<em class="	fa fa-money">&nbsp;</em> Compras
+		</a>
+	</li>	
 	{{-- FIN SECCION COMPRA --}}
 
 

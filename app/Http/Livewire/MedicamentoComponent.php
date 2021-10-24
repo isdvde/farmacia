@@ -38,11 +38,8 @@ class MedicamentoComponent extends Component
     }
 
     public function closeForm() {
-    	$this->monodroga = "";
-    	$this->presentacion = "";
-    	$this->accion = "";
-    	$this->precio = "";
     	$this->dispatchBrowserEvent('closeForm');
+        $this->reset();
     }
 
     public function store() {

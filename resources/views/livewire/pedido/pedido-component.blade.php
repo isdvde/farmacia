@@ -21,20 +21,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($pedidos as $pedido)
+							@foreach($pedidos as $p)
 							<tr>
-								<td class="text-center">{{$pedido->id}}</th>
-								<td class="text-center">{{$pedido->farmacia->nombre}}</th>
-								<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
+								<td class="text-center">{{$p->id}}</th>
+								<td class="text-center">{{$p->farmacia->nombre}}</th>
+								<td class="text-center">{{$p->laboratorio->nombre}}</th>
 								<td class="text-center">
-									{{$pedido->empleado->nombre.' '.$pedido->empleado->apellido }}
-								</th>
-								<td class="text-center">{{$pedido->forma_pago}}</th>
+									{{$p->empleado->nombre.' '.$p->empleado->apellido }}
+								</td>
+								<td class="text-center">{{$p->forma_pago}}</th>
 
 								<td class="text-center" class="col-1 text-center">
-									<button wire:click.prevent="openForm({{ 1 }}, {{ $pedido}})" class="btn btn-success" >Ver</button>
-									<button wire:click.prevent="openForm({{ 1 }}, {{ $pedido}})" class="btn btn-info" >Editar</button>
-									<button wire:click.prevent="delete({{ $pedido->id }})" class="btn btn-danger" >Eliminar</button>
+									<button wire:click.prevent="show({{$p}})" class="btn btn-success" >Ver</button>
+									<button wire:click.prevent="edit({{$p}})" class="btn btn-info" >Editar</button>
+									<button wire:click.prevent="delete({{ $p->id }})" class="btn btn-danger" >Eliminar</button>
 								</th>
 							</tr>
 							@endforeach
@@ -44,7 +44,7 @@
 
 
 					<div class="col-2 text-center">
-						<button wire:click.prevent="openForm({{0}})" class="btn btn-primary">Añadir</button>
+						<button wire:click.prevent="create" class="btn btn-primary">Añadir</button>
 
 						<div class="bootstrap-iso">
 							<div class="col-2 text-right">
@@ -56,4 +56,7 @@
 			</div>
 		</div>
 	</div>
+	 @include('livewire.pedido.show')
+	 @include('livewire.pedido.create.create')
+	 @include('livewire.pedido.edit.edit')
 </div>

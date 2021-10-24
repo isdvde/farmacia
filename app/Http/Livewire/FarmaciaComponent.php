@@ -34,9 +34,8 @@ class FarmaciaComponent extends Component
     }
 
     public function closeForm() {
-    	$this->nombre = "";
-    	$this->ubicacion = "";
     	$this->dispatchBrowserEvent('closeForm');
+        $this->reset();
     }
 
     public function store() {
