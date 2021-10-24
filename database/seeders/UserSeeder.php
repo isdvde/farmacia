@@ -30,6 +30,5 @@ class UserSeeder extends Seeder
              'ci' => $empleado->ci,
          ]);
         }
-        
     }
 }

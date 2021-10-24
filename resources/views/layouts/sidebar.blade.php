@@ -34,7 +34,7 @@
 			<a href="panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a>
 		</li>
 		<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-			<em class="fa fa-navicon">&nbsp;</em> Multilevel 
+			<em class="fa fa-navicon">&nbsp;</em> Multilevel
 			<span data-toggle="collapse" href="#sub-item-1" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -56,8 +56,8 @@
 	{{-- INICIO SECCION FARMACIA --}}
 {{-- 	<li class="parent @if(preg_match('#farmacia.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#farmaciaItem">
-			<em class="	fa fa-home">&nbsp;&nbsp;</em> 
-			Farmacias 
+			<em class="	fa fa-home">&nbsp;&nbsp;</em>
+			Farmacias
 			<span data-toggle="collapse" href="#farmaciaItem" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -88,7 +88,7 @@
 {{-- 	<li class="parent @if(preg_match('#empleado.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#empleadoItem">
 			<em class="fa fa-user">&nbsp;&nbsp;</em>
-			Empleados 
+			Empleados
 			<span data-toggle="collapse" href="#empleadoItem" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -118,8 +118,8 @@
 	{{-- INICIO SECCION PEDIDO --}}
 	{{-- <li class="parent @if(preg_match('#pedido.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#pedidoItem">
-			<em class="fa fa-list-alt">&nbsp;&nbsp;</em> 
-			Pedidos 
+			<em class="fa fa-list-alt">&nbsp;&nbsp;</em>
+			Pedidos
 			<span data-toggle="collapse" href="#pedidoItem" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -148,8 +148,8 @@
 	{{-- INICIO SECCION LABORATORIO --}}
 {{-- 	<li class="parent @if(preg_match('#laboratorio.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#laboratorioItem">
-			<em class="	fa fa-truck">&nbsp;&nbsp;</em> 
-			Laboratorios 
+			<em class="	fa fa-truck">&nbsp;&nbsp;</em>
+			Laboratorios
 			<span data-toggle="collapse" href="#laboratorioItem" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -182,13 +182,13 @@
 			<em class="	fa fa-database">&nbsp;</em> Inventario
 		</a>
 	</li>
-	{{-- FIN SECCION INVENTTARIO --}}
+	{{-- FIN SECCION INVENTARIO --}}
 
 	{{-- INICIO SECCION MEDICAMENTO --}}
 	{{-- <li class="parent @if(preg_match('#medicamento.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#medicamentoItem">
-			<em class="fa fa-heartbeat">&nbsp;&nbsp;</em> 
-			Medicamentos 
+			<em class="fa fa-heartbeat">&nbsp;&nbsp;</em>
+			Medicamentos
 			<span data-toggle="collapse" href="#medicamentoItem" class="icon pull-right">
 				<em class="fa fa-plus"></em>
 			</span>
@@ -212,8 +212,26 @@
 			<em class="	fa fa-heartbeat">&nbsp;</em> Medicamentos
 		</a>
 	</li>
-	{{-- FIN SECCION MEDCAMENTO --}}
+	{{-- FIN SECCION MEDICAMENTO --}}
 
+{{-- INICIO SECCION COMPRA--}}
+	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
+		<a data-toggle="collapse" href="#compraItem">
+			<em class="fa fa-money">&nbsp;&nbsp;</em>
+			compra
+			<span data-toggle="collapse" href="#compraItem" class="icon pull-right">
+				<em class="fa fa-plus"></em>
+			</span>
+		</a>
+		<ul class="children collapse @if(preg_match('#compra.*#',Request::path())) in @endif" id="compraItem">
+			<li>
+				<a class="" href="{{ url('compra') }}">
+					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
+				</a>
+			</li>
+		</ul>
+	</li>
+	{{-- FIN SECCION COMPRA --}}
 
 
 {{-- 	<li>
@@ -231,4 +249,3 @@
 
 </ul>
 </div><!--/.sidebar-->
-

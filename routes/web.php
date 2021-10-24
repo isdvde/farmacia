@@ -7,7 +7,7 @@ use App\Http\Controllers\FarmaciaController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\MedicamentoController;
 use App\Http\Controllers\LaboratorioController;
-
+use App\Http\Controllers\CompraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +38,6 @@ Route::prefix('/')->middleware('auth')->group(function() {
 		Route::post('delete', 'EmpleadoController@delete');
 	});
 
-
 // PEDIDOS
 	Route::prefix('pedido')->group(function() {
 		Route::get('/', 'PedidoController@index');
@@ -49,7 +48,6 @@ Route::prefix('/')->middleware('auth')->group(function() {
 		Route::get('{id}/show', 'PedidoController@show');
 		Route::post('delete', 'PedidoController@delete');
 	});
-
 
 //laboratorio
 	Route::prefix('laboratorio')->group(function(){
@@ -65,9 +63,7 @@ Route::prefix('/')->middleware('auth')->group(function() {
 
 //inventario
 	Route::prefix('inventario')->group(function(){
-
 		Route::get('/',[InventarioController::class,'index' ]);
-
 	});
 
 //medicamento
@@ -84,7 +80,6 @@ Route::prefix('/')->middleware('auth')->group(function() {
 
 //farmacia
 	Route::prefix('farmacia')->group(function(){
-
 		Route::get('/',[FarmaciaController::class,'index' ]);
 		Route::get('create',[FarmaciaController::class,'create' ] );
 		Route::post('create',[FarmaciaController::class,'store' ]);
@@ -93,4 +88,16 @@ Route::prefix('/')->middleware('auth')->group(function() {
 		Route::post('delete',[FarmaciaController::class,'delete' ]);
 
 	});
+
+	//compra
+	Route::prefix('compra')->group(function(){
+
+	    Route::get('/',[CompraController::class,'index' ]);
+	    Route::get('{id}/create',[CompraController::class,'create' ] );
+	    Route::post('create',[CompraController::class,'store' ]);
+	    Route::get('{id}/edit',[CompraController::class,'edit' ]);
+	    Route::post('{id}/edit',[CompraController::class,'update' ]);
+	    Route::get('{id}/show', [CompraController::class,'show' ]);
+	});
+
 });
