@@ -27,7 +27,6 @@
 						<thead >
 							<tr>
 
-								<th scope="col" class="text-center">ID</th>
 								<th scope="col" class="text-center">Farmacia</th>
 								<th scope="col" class="text-center">Pedido</th>
 								<th scope="col" class="text-center">Vencimiento</th>
@@ -36,20 +35,19 @@
 						</thead>
 
 						<tbody>
-							@foreach($compras as $compra)
+							@foreach($compras as $c)
 
 							<tr>
-								<td class="text-center">{{$compra->id}}</td>
-								<td class="text-center">{{$compra->pedido->farmacia->nombre}}</td>
-								<td class="text-center">{{$compra->id_pedido}}</td>
-								<td class="text-center">{{$compra->vencimiento}}</td>
+								<td class="text-center">{{$c->pedido->farmacia->nombre}}</td>
+								<td class="text-center">{{$c->id_pedido}}</td>
+								<td class="text-center">{{$c->vencimiento}}</td>
 								<td class="text-center">
-									{{$compra->cancelado == 0 ? 'No' : 'Si' }}
+									{{$c->cancelado == 0 ? 'No' : 'Si' }}
 								</td>
 
 								<td class="text-center" class="col-1 text-center">
-									<button wire:click.prevent="show({{$compra}})" class="btn btn-success" >Ver</button>
-									<button wire:click.prevent="edit({{$compra}})" class="btn btn-info" >Editar</button>
+									<button wire:click="show({{$c}})" class="btn btn-success" >Ver</button>
+									<button wire:click="pay({{$c}})" class="btn btn-warning" >Cancelar</button>
 								</td>
 							</tr>
 							@endforeach

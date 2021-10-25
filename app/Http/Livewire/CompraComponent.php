@@ -18,11 +18,10 @@ class CompraComponent extends Component
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $formType = 1;
+	public $medicamento, $cantidad, $inventario;
 	public $farmacia, $laboratorio, $empleado, $forma_pago;
-	public $medicamento, $cantidad;
 	public $pmedicamentos = null;
-	public $pid, $vencimiento, $cancelado, $isCompra, $compra;
+	public $pid, $vencimiento, $cancelado, $isCompra, $compra, $pedido;
 	public $fpago = [
 		'contado' => 'Contado',
 		'5d' => 'Credito 5 dias',
@@ -50,7 +49,6 @@ class CompraComponent extends Component
 	public function loadData(Pedido $pedido){
 		$this->reset();
 		$this->pedido = $pedido;
-		$this->compra = $pedido->compra;
 		$this->forma_pago = $pedido->forma_pago;
 		$this->cancelado = 0;
 		$this->pmedicamentos = $pedido->pedidoMedicamentos;
@@ -64,10 +62,10 @@ class CompraComponent extends Component
 		}
 	}
 
-	public function create(Pedido $pedido) {
+	public function create($pid) {
 		$this->reset();
-		if($pedido != null) $this->loadData($pedido);
-		$this->pedido = $pedido;
+		$this->pedido = Pedido::find($pid);
+		$this->loadData($this->pedido);
 		$this->fpago = [
 			'contado' => 'Contado',
 			'5d' => 'Credito 5 dias',
@@ -115,16 +113,7 @@ class CompraComponent extends Component
 	public function loadDataCompra(Compra $compra) {
 		$this->reset();
 		$this->compra = $compra;
-		$this->forma_pago = $compra->pedido->forma_pago;
-		$this->cancelado = 0;
 		$this->pmedicamentos = $compra->compraMedicamentos;
-		$this->cantidad = [];
-		$this->medicamento = [];
-		$this->isCompra = [];
-		foreach ($this->pmedicamentos as $pme) {
-			array_push($this->cantidad, $pme->cantidad);
-			array_push($this->medicamento, $pme->id_medicamento);
-		}
 	}
 
 	public function show(Compra $compra) {
@@ -135,6 +124,16 @@ class CompraComponent extends Component
 
 	public function closeShow() {
 		$this->dispatchBrowserEvent('closeShow');
+	}
+
+	public function pay(Compra $c) {
+		if (isset($c)) {
+			if ($c->cancelado == 0) {
+				$c->update([
+					'cancelado' => 1
+				]);
+			}
+		}
 	}
 
 }

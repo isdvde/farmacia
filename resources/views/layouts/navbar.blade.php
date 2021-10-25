@@ -6,6 +6,9 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span></button>
 				<a class="navbar-brand" href="{{ url('/') }}">
+					<span>
+						<img src="{{ url('img/logo.png') }}" style="width: 10%">
+					</span>
 					<span>Farma</span>Segura
 				</a>
 				<ul class="nav navbar-top-links navbar-right">
