@@ -56,9 +56,17 @@
 			</div>
 			<div class="modal-footer">
 				<button wire:click.prevent="closeShow" type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+				
+				@isset ($pedido)
+				<button wire:click.prevent="compra({{$pedido->id}})" type="button" class="btn btn-success">
+					Comprar	
+				</button>
+				@endisset
+
 				<button wire:click.prevent="edit({{$pedido}}, {{1}})" type="button" class="btn btn-primary">
 					Editar	
 				</button>
+
 			</div>
 		</div>
 	</div>

@@ -232,7 +232,7 @@
 		</ul>
 	</li> --}}
 
-	<li @if(Request::is('compra'))class="active"@endif>
+	<li @if(preg_match('#compra.*#',Request::path()))class="active"@endif>
 		<a href="{{ url('compra') }}">
 			<em class="	fa fa-money">&nbsp;</em> Compras
 		</a>

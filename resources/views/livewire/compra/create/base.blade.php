@@ -1,14 +1,3 @@
-
-@php
-$forma_pago = array(
-	'contado' => 'Contado',
-	'5d' => 'Credito 5 dias',
-	'10d' => 'Credito 10 dias',
-	'15d' => 'Credito 15 dias',
-	'20d' => 'Credito 20 dias',
-	'30d' => 'Credito 30 dias',
-)
-@endphp
 <table class="table">
 	<thead>
 		<tr>
@@ -23,10 +12,9 @@ $forma_pago = array(
 		<tr>
 			<td class="text-center">{{$pedido->farmacia->nombre}}</td>
 			<td class="text-center">{{$pedido->laboratorio->nombre}}</td>
-			<td class="text-center">{{$forma_pago[$pedido->forma_pago]}}</td>
-			<td class="text-center">{{$pedido->empleado->nombre}}</td>
+			<td class="text-center">{{$fpago[$forma_pago]}}</td>
+			<td class="text-center">{{$pedido->empleado->nombre.' '.$pedido->empleado->apellido}}</td>
 		</tr>
 		@endisset
 	</tbody>
 </table>
-

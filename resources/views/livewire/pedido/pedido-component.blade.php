@@ -29,13 +29,13 @@
 								<td class="text-center">
 									{{$p->empleado->nombre.' '.$p->empleado->apellido }}
 								</td>
-								<td class="text-center">{{$p->forma_pago}}</th>
+								<td class="text-center">{{$p->forma_pago}}</td>
 
 								<td class="text-center" class="col-1 text-center">
 									<button wire:click.prevent="show({{$p}})" class="btn btn-success" >Ver</button>
 									<button wire:click.prevent="edit({{$p}})" class="btn btn-info" >Editar</button>
 									<button wire:click.prevent="delete({{ $p->id }})" class="btn btn-danger" >Eliminar</button>
-								</th>
+								</td>
 							</tr>
 							@endforeach
 

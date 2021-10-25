@@ -59,7 +59,7 @@ class Pedido extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function compras()
+    public function compra()
     {
         return $this->hasMany('App\Models\Compra', 'id_pedido');
     }
