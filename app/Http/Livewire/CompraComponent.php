@@ -9,6 +9,7 @@ use App\Models\Laboratorio;
 use App\Models\Farmacia;
 use App\Models\Medicamento;
 use App\Models\Compra;
+use App\Models\Inventario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -56,6 +57,7 @@ class CompraComponent extends Component
 		$this->cantidad = [];
 		$this->medicamento = [];
 		$this->isCompra = [];
+		$this->inventario = [];
 		foreach ($this->pmedicamentos as $pme) {
 			array_push($this->cantidad, $pme->cantidad);
 			array_push($this->medicamento, $pme->id_medicamento);
@@ -89,19 +91,26 @@ class CompraComponent extends Component
 		]);
 
 
-		for ($i=0; $i < count($this->isCompra); $i++) {
-			if($this->isCompra[$i] == "1"){
+		for ($i=0; $i < count($this->medicamento); $i++) {
+			if(isset($this->isCompra[$i]) && $this->isCompra[$i] == "1"){
 				$compra->compraMedicamentos()->create([
 					'id_compra' => $compra->id,
 					'id_medicamento' => $this->medicamento[$i],
 					'cantidad' => $this->cantidad[$i],
+				]);
+
+				$inv = Inventario::where('id_medicamento', $this->medicamento[$i])->first();
+				$oldValue = $inv->cantidad;
+				$newValue = $oldValue + $this->cantidad[$i];
+
+				$inv->update([
+					'cantidad' => $newValue
 				]);
 			}
 		}
 
 		$this->closeCreate();
 	}
-
 
 	public function loadDataCompra(Compra $compra) {
 		$this->reset();
