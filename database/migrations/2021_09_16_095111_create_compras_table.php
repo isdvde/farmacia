@@ -15,6 +15,7 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->integer('id', true);
+            $table->integer('id_farmacia');
             $table->integer('id_pedido')->index('compras_fk');
             $table->date('vencimiento');
             $table->boolean('cancelado');

@@ -14,9 +14,18 @@ class AddForeignKeysToPedidosTable extends Migration
     public function up()
     {
         Schema::table('pedidos', function (Blueprint $table) {
-            $table->foreign('id_farmacia', 'pedidos_ibfk_1')->references('id')->on('farmacias');
-            $table->foreign('id_laboratorio', 'pedidos_ibfk_2')->references('id')->on('laboratorios');
-            $table->foreign('id_empleado', 'pedidos_ibfk_3')->references('ci')->on('empleados');
+            $table->foreign('id_farmacia', 'pedidos_ibfk_1')->references('id')->on('farmacias')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            $table->foreign('id_laboratorio', 'pedidos_ibfk_2')->references('id')->on('laboratorios')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            $table->foreign('id_empleado', 'pedidos_ibfk_3')->references('ci')->on('empleados')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

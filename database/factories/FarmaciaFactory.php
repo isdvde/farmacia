@@ -22,7 +22,8 @@ class FarmaciaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->word(),
+            'ubicacion' => $this->faker->state(),
         ];
     }
 }

@@ -14,8 +14,14 @@ class AddForeignKeysToPedidoMedicamentoTable extends Migration
     public function up()
     {
         Schema::table('pedido_medicamento', function (Blueprint $table) {
-            $table->foreign('id_pedido', 'pedido_medicamento_ibfk_1')->references('id')->on('pedidos');
-            $table->foreign('id_medicamento', 'pedido_medicamento_ibfk_2')->references('id')->on('medicamentos');
+            $table->foreign('id_pedido', 'pedido_medicamento_ibfk_1')->references('id')->on('pedidos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
+            $table->foreign('id_medicamento', 'pedido_medicamento_ibfk_2')->references('id')->on('medicamentos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

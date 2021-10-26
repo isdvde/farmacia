@@ -14,7 +14,10 @@ class AddForeignKeysToEmpleadosTable extends Migration
     public function up()
     {
         Schema::table('empleados', function (Blueprint $table) {
-            $table->foreign('id_farmacia', 'empleados_ibfk_1')->references('id')->on('farmacias');
+            $table->foreign('id_farmacia', 'empleados_ibfk_1')->references('id')->on('farmacias')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 

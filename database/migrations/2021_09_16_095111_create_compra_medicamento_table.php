@@ -17,6 +17,7 @@ class CreateCompraMedicamentoTable extends Migration
             $table->integer('id', true);
             $table->integer('id_compra')->index('compra_medicamento_fk');
             $table->integer('id_medicamento')->index('compra_medicamento_fk_1');
+            $table->integer('cantidad');
         });
     }
 

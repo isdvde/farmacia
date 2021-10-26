@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
@@ -18,10 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Pedido extends Model
 {
+    use HasFactory;
     /**
      * @var array
      */
-    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago'];
+    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago', 'slug'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -57,7 +59,7 @@ class Pedido extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function compras()
+    public function compra()
     {
         return $this->hasMany('App\Models\Compra', 'id_pedido');
     }
@@ -69,4 +71,12 @@ class Pedido extends Model
     {
         return $this->hasMany('App\Models\PedidoMedicamento', 'id_pedido');
     }
+
+    public function delete() {
+
+        $this->compra()->delete();
+        $this->pedidoMedicamentos()->delete();
+        return parent::delete();
+    }
+
 }

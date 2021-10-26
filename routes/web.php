@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\FarmaciaController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\LaboratorioController;
+use App\Http\Controllers\CompraController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,26 +19,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('/')->middleware('auth')->group(function() {
 
+	Route::get('/', function(){
+		return view('home');
+	});
 
+// EMPLEADOS
+	Route::get('empleado', 'EmpleadoController@index')
+	->middleware('role:admin|administrativo');
 
+// PEDIDOS
+	Route::get('pedido', 'PedidoController@index')
+	->middleware('role:admin|analista');
 
-//farmacias
-Route::get('farmacias',[farmaciaController::class,'index' ]);
+//laboratorio
+	Route::get('laboratorio',[LaboratorioController::class,'index' ])
+	->middleware('role:admin|analista');
 
-Route::get('farmacias/create',[farmaciaController::class,'create' ] );
+//inventario
+	Route::get('inventario',[InventarioController::class,'index' ])
+	->middleware('role:admin|administrativo|farmaceutico|analista|pasante');
 
-Route::get('farmacias/{farmacia}', [farmaciaController::class,'show' ]);
+//medicamento
+	Route::get('medicamento',[MedicamentoController::class,'index' ])
+	->middleware('role:admin|analista|administrativo|farmaceutico|pasante');
 
-//pasante
+//farmacia
+	Route::get('farmacia',[FarmaciaController::class,'index' ])
+	->middleware('role:admin|analista|farmaceutico|administrativo');
 
-//auxiliar
-
-//administrador
+	//compra
+	Route::get('compra/{pid?}',[CompraController::class,'index' ])
+	->middleware('role:admin|administrativo|analista');
+});

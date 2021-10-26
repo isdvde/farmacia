@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
@@ -14,10 +15,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Farmacia extends Model
 {
+    use HasFactory;
+
     /**
      * @var array
      */
-    protected $fillable = ['nombre', 'ubicacion'];
+    protected $fillable = ['nombre', 'ubicacion', 'telefono'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -48,5 +51,10 @@ class Farmacia extends Model
     public function pedidos()
     {
         return $this->hasMany('App\Models\Pedido', 'id_farmacia');
+    }
+
+    public function compras()
+    {
+        return $this->hasMany('App\Models\Compra', 'id_farmacia');
     }
 }

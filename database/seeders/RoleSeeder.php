@@ -8,21 +8,48 @@ use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-       $role1= Role::create(['name'=>'Admin']);
-       $role2= Role::create(['name'=>'Farmaceutico']);
-       $role3= Role::create(['name'=>'Auxiliar']);
-       $role4= Role::create(['name'=>'pasantes']);
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
 
-        Permission::create(['name' => 'admin.home'])->assignRole($role1);
-        Permission::create(['name' => 'farmaceutico.home'])->assignRole($role2);
-        Permission::create(['name' => 'auxiliar.home'])->assignRole($role3);
-        Permission::create(['name' => 'pasante.home'])->assignRole($role4);
-    }
+		Role::create(['name' => 'admin'])->givePermissionTo(Permission::all());
+		Role::create(['name' => 'vigilante']);
+		Role::create(['name' => 'administrativo'])->givePermissionTo([
+			'inventario.view',
+			'medicamento.view',
+		]);
+		Role::create(['name' => 'farmaceutico'])->givePermissionTo([
+			'inventario.view',
+			'inventario.create',
+			'inventario.edit',
+			'medicamento.create',
+			'medicamento.view',
+			'medicamento.edit',
+		]);
+		Role::create(['name' => 'analista'])->givePermissionTo([
+				'inventario.view',
+				'inventario.create',
+				'inventario.edit',
+				'medicamento.create',
+				'medicamento.view',
+				'medicamento.edit',
+				'pedido.create',
+				'pedido.view',
+				'pedido.edit',
+				'compra.create',
+				'compra.view',
+				'compra.edit',
+				'laboratorio.create',
+				'laboratorio.view',
+				'laboratorio.edit',
+		]);
+		Role::create(['name' => 'pasante'])->givePermissionTo([
+			'inventario.view',
+			'medicamento.view',
+		]);
+	}
 }

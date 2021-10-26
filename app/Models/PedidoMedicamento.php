@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PedidoMedicamento extends Model
 {
+    use HasFactory;
     /**
      * The table associated with the model.
      * 
@@ -23,7 +25,8 @@ class PedidoMedicamento extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pedido', 'id_medicamento'];
+    protected $fillable = ['id_pedido', 'id_medicamento','cantidad'];
+
 
     /**
      * Indicates if the model should be timestamped.

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $ci
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Responsable extends Model
 {
+    use HasFactory;
     /**
      * The table associated with the model.
      * 
@@ -38,7 +40,8 @@ class Responsable extends Model
     /**
      * @var array
      */
-    protected $fillable = ['ci_representante', 'nombre', 'apellido', 'telefono'];
+    protected $fillable = ['ci','ci_representante', 'nombre', 'apellido', 'telefono'];
+
 
     /**
      * Indicates if the model should be timestamped.

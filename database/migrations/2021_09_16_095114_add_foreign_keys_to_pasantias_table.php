@@ -14,7 +14,10 @@ class AddForeignKeysToPasantiasTable extends Migration
     public function up()
     {
         Schema::table('pasantias', function (Blueprint $table) {
-            $table->foreign('ci', 'pasantias_ibfk_1')->references('ci')->on('empleados');
+            $table->foreign('ci', 'pasantias_ibfk_1')->references('ci')->on('empleados')
+            ->onDelete('cascade')
+            ->onUpdate('cascade')
+            ;
         });
     }
 
