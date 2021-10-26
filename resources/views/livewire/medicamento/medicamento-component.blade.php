@@ -30,17 +30,21 @@
 								<td class="text-center">{{$medicamento->accion}}</td>
 								<td class="text-center">{{$medicamento->precio}}</td>
 
+								@can('medicamento.edit')
 								<td class="col-1 text-center">
 									<button wire:click.prevent="openForm({{ 1 }}, {{ $medicamento}})" class="btn btn-info" >Editar</button>
 									<button wire:click.prevent="delete({{ $medicamento->id }})" class="btn btn-danger" >Eliminar</button>
 								</td>
+								@endcan
 							</tr>
 
 							@endforeach
 						</tbody>
 					</table>
 					<div class="col-2 text-center">
+						@can('medicamento.create')
 						<button wire:click.prevent="openForm({{0}})" class="btn btn-primary">Añadir</button>
+						@endcan
 
 						<div class="bootstrap-iso">
 							<div class="col-2 text-right">

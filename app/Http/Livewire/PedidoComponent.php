@@ -9,6 +9,7 @@ use App\Models\Laboratorio;
 use App\Models\Farmacia;
 use App\Models\Medicamento;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PedidoComponent extends Component
 {
@@ -122,6 +123,7 @@ class PedidoComponent extends Component
 				'id_laboratorio' => $this->laboratorio,
 				'id_empleado' => $this->empleado,
 				'forma_pago' => $this->forma_pago,
+				'slug' => Str::random(10),
 			]);
 
 			for ($i=0; $i < count($this->medicamento); $i++) { 
@@ -166,7 +168,7 @@ class PedidoComponent extends Component
 		$this->dispatchBrowserEvent('closeShow');
 	}
 
-	public function compra($id) {
-		return redirect('compra/'.$id);
+	public function compra(Pedido $p) {
+		return redirect('compra/'.$p->slug);
 	}
 }

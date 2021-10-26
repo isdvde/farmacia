@@ -19,6 +19,7 @@ class CreatePedidosTable extends Migration
             $table->integer('id_laboratorio')->index('id_laboratorio');
             $table->integer('id_empleado')->index('id_empleado');
             $table->string('forma_pago', 45)->nullable();
+            $table->string('slug', 45)->nullable();
         });
     }
 

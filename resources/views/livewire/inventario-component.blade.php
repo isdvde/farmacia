@@ -13,7 +13,6 @@
 					<table class="table" id="tinventario">
 						<thead>
 							<tr>
-								<th scope="col" class="text-center">ID</th>
 								<th scope="col" class="text-center">Farmacia</th>
 								<th scope="col" class="text-center">Medicamento</th>
 								<th scope="col" class="text-center">Cantidad</th>
@@ -24,7 +23,6 @@
 							@foreach ( $inventarios as $inventario )
 
 							<tr>
-								<td class="text-center">{{$inventario->id}}</td>
 								<td class="text-center">{{$inventario->farmacia->nombre}}</td>
 								<td class="text-center">{{$inventario->medicamento->monodroga}}</td>
 								<td class="text-center">{{$inventario->cantidad}}</td>

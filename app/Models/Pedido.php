@@ -23,7 +23,7 @@ class Pedido extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago'];
+    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago', 'slug'];
 
     /**
      * Indicates if the model should be timestamped.

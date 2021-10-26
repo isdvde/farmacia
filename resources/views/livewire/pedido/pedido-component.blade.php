@@ -12,7 +12,6 @@
 					<table class="table" id="tpedido">
 						<thead>
 							<tr>
-								<th scope="col" class="text-center">ID</th>
 								<th scope="col" class="text-center">Farmacia</th>
 								<th scope="col" class="text-center">Laboratorio</th>
 								<th scope="col" class="text-center">Empleado</th>
@@ -23,7 +22,6 @@
 						<tbody>
 							@foreach($pedidos as $p)
 							<tr>
-								<td class="text-center">{{$p->id}}</th>
 								<td class="text-center">{{$p->farmacia->nombre}}</th>
 								<td class="text-center">{{$p->laboratorio->nombre}}</th>
 								<td class="text-center">
@@ -32,9 +30,11 @@
 								<td class="text-center">{{$p->forma_pago}}</td>
 
 								<td class="text-center" class="col-1 text-center">
+									@can('pedido.edit')
 									<button wire:click.prevent="show({{$p}})" class="btn btn-success" >Ver</button>
 									<button wire:click.prevent="edit({{$p}})" class="btn btn-info" >Editar</button>
 									<button wire:click.prevent="delete({{ $p->id }})" class="btn btn-danger" >Eliminar</button>
+									@endcan
 								</td>
 							</tr>
 							@endforeach
@@ -44,7 +44,9 @@
 
 
 					<div class="col-2 text-center">
+						@can('pedido.create')
 						<button wire:click.prevent="create" class="btn btn-primary">Añadir</button>
+						@endcan
 
 						<div class="bootstrap-iso">
 							<div class="col-2 text-right">

@@ -1,14 +1,18 @@
 <div>
 
+
 	@isset ($pid)
-	@if (App\Models\Compra::where('id_pedido', $pid)->exists())
+	@php
+		$p = App\Models\Pedido::where('slug', $pid)->first()
+	@endphp
+	@if ($p->compra()->exists())
 	<div class="bootstrap-iso" ></div>
 	<div class="alert alert-info" role="alert" style="margin-top: 15px;">
 		<span class="sr-only">Error:</span>
 		La compra ya existe
 	</div>
 	@else
-	<div wire:init="create({{$pid}})" ></div>
+	<div wire:init="create({{$p}})" ></div>
 	@endif
 	@endisset
 
@@ -45,10 +49,12 @@
 									{{$c->cancelado == 0 ? 'No' : 'Si' }}
 								</td>
 
+								@can('compra.edit')
 								<td class="text-center" class="col-1 text-center">
 									<button wire:click="show({{$c}})" class="btn btn-success" >Ver</button>
 									<button wire:click="pay({{$c}})" class="btn btn-warning" >Cancelar</button>
 								</td>
+								@endcan
 							</tr>
 							@endforeach
 						</tbody>

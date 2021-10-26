@@ -31,10 +31,12 @@
 								<td class="text-center">{{$laboratorio->direccion}}</td>
 								<td class="text-center">{{$laboratorio->telefono}}</td>
 
+								@can('laboratorio.edit')
 								<td class="col-1 text-center">
 									<button wire:click.prevent="openForm({{ 1 }}, {{ $laboratorio}})" class="btn btn-info" >Editar</button>
 									<button wire:click.prevent="delete({{ $laboratorio->id }})" class="btn btn-danger" >Eliminar</button>
 								</td>
+								@endcan
 							</tr>
 
 							@endforeach
@@ -42,7 +44,9 @@
 					</table>
 
 					<div class="col-2 text-center">
+						@can('laboratorio.create')
 						<button wire:click.prevent="openForm({{0}})" class="btn btn-primary">Añadir</button>
+						@endcan
 
 						<div class="bootstrap-iso">
 							<div class="col-2 text-right">

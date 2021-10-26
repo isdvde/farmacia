@@ -35,10 +35,10 @@ class CompraComponent extends Component
 	{
 		$user = Auth::user();
 		if($user->username == 'admin'){
-			$pedidos = Pedido::paginate(8);
+			$compras = Compra::paginate(8);
 
 		} else {
-			$pedidos = Pedido::where('id_farmacia', $user->empleado->id_farmacia)->paginate(8);
+			$compras = Compra::where('id_farmacia', $user->empleado->id_farmacia)->paginate(8);
 		}
 
 		return view('livewire.compra.compra-component')
@@ -61,9 +61,9 @@ class CompraComponent extends Component
 		}
 	}
 
-	public function create($pid) {
+	public function create(Pedido $p) {
 		$this->reset();
-		$this->pedido = Pedido::find($pid);
+		$this->pedido = $p;
 		$this->loadData($this->pedido);
 		$this->fpago = [
 			'contado' => 'Contado',

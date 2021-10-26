@@ -58,14 +58,18 @@
 				<button wire:click.prevent="closeShow" type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 				
 				@isset ($pedido)
-				<button wire:click.prevent="compra({{$pedido->id}})" type="button" class="btn btn-success">
+				@can('compra.create')
+				<button wire:click.prevent="compra({{$pedido}})" type="button" class="btn btn-success">
 					Comprar	
 				</button>
+				@endcan
 				@endisset
 
+				@can('pedido.edit')
 				<button wire:click.prevent="edit({{$pedido}}, {{1}})" type="button" class="btn btn-primary">
 					Editar	
 				</button>
+				@endcan
 
 			</div>
 		</div>
