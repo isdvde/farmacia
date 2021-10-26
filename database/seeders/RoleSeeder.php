@@ -21,61 +21,37 @@ class RoleSeeder extends Seeder
 		$pasante = Role::create(['name' => 'pasante']);*/
 
 		Role::create(['name' => 'admin'])->givePermissionTo(Permission::all());
-		Role::create(['name' => 'vigilante'])->givePermissionTo([
-
-            'farmacia.view',
-
-		]);
-
-
+		Role::create(['name' => 'vigilante']);
 		Role::create(['name' => 'administrativo'])->givePermissionTo([
 			'inventario.view',
-            'farmacia.view',
-            'compra.view',
-            'pedido.view',
-            'empleado.view',
-            'empleado.show',
-            'empleado.edit',
-            'empleado.create',
+			'medicamento.view',
 		]);
 		Role::create(['name' => 'farmaceutico'])->givePermissionTo([
 			'inventario.view',
-		//	'inventario.create',
-		//	'inventario.edit',
-            'farmacia.view',
-
+			'inventario.create',
+			'inventario.edit',
+			'medicamento.create',
+			'medicamento.view',
+			'medicamento.edit',
 		]);
 		Role::create(['name' => 'analista'])->givePermissionTo([
 				'inventario.view',
-			//	'inventario.create',
-			//	'inventario.edit',  
 				'medicamento.create',
 				'medicamento.view',
 				'medicamento.edit',
 				'pedido.create',
 				'pedido.view',
 				'pedido.edit',
-                'pedido.show',
-				'laboratorio.create',
-				'laboratorio.view',
-				'laboratorio.edit',
 				'compra.create',
 				'compra.view',
 				'compra.edit',
-                'compra.show',
-				'farmacia.view',
-                'farmacia.show',
-
-
-/*			'inventario,medicamento,pedido,laboratorio.*'*/
+				'laboratorio.create',
+				'laboratorio.view',
+				'laboratorio.edit',
 		]);
 		Role::create(['name' => 'pasante'])->givePermissionTo([
 			'inventario.view',
-            'farmacia.view',
-/*			'inventario,medicamento.view'*/
+			'medicamento.view',
 		]);
-
-
-
 	}
 }

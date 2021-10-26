@@ -20,7 +20,7 @@ use App\Http\Controllers\CompraController;
 */
 
 
-	Auth::routes();
+Auth::routes();
 
 Route::prefix('/')->middleware('auth')->group(function() {
 
@@ -28,25 +28,31 @@ Route::prefix('/')->middleware('auth')->group(function() {
 		return view('home');
 	});
 
-// empleado
-		Route::get('empleado', 'EmpleadoController@index')->middleware('role:admin|administrativo');
+// EMPLEADOS
+	Route::get('empleado', 'EmpleadoController@index')
+	->middleware('role:admin|administrativo');
 
-// pedido
-		Route::get('pedido', 'PedidoController@index')->middleware('role:admin|administrativo|analista');
+// PEDIDOS
+	Route::get('pedido', 'PedidoController@index')
+	->middleware('role:admin|analista');
 
 //laboratorio
-		Route::get('laboratorio',[LaboratorioController::class,'index' ])->middleware('role:admin|analista');
+	Route::get('laboratorio',[LaboratorioController::class,'index' ])
+	->middleware('role:admin|analista');
 
 //inventario
-		Route::get('inventario',[InventarioController::class,'index' ])->middleware('role:admin|administrativo|farmaceutico|analista|pasante');
+	Route::get('inventario',[InventarioController::class,'index' ])
+	->middleware('role:admin|administrativo|farmaceutico|analista|pasante');
 
 //medicamento
-		Route::get('medicamento',[MedicamentoController::class,'index' ])->middleware('role:admin|analista');
+	Route::get('medicamento',[MedicamentoController::class,'index' ])
+	->middleware('role:admin|analista|administrativo|farmaceutico|pasante');
 
 //farmacia
-		Route::get('farmacia',[FarmaciaController::class,'index' ])->middleware('role:admin|pasante|analista|farmaceutico|administrativo|vigilante');
-//compra
-	    Route::get('compra',[CompraController::class,'index' ])->middleware('role:admin|administrativo|analista');
+	Route::get('farmacia',[FarmaciaController::class,'index' ])
+	->middleware('role:admin|analista|farmaceutico|administrativo');
 
-
+	//compra
+	Route::get('compra/{pid?}',[CompraController::class,'index' ])
+	->middleware('role:admin|administrativo|analista');
 });

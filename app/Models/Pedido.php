@@ -23,7 +23,7 @@ class Pedido extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago'];
+    protected $fillable = ['id_farmacia', 'id_laboratorio', 'id_empleado', 'forma_pago', 'slug'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -59,7 +59,7 @@ class Pedido extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function compras()
+    public function compra()
     {
         return $this->hasMany('App\Models\Compra', 'id_pedido');
     }
@@ -74,7 +74,7 @@ class Pedido extends Model
 
     public function delete() {
 
-        $this->compras()->delete();
+        $this->compra()->delete();
         $this->pedidoMedicamentos()->delete();
         return parent::delete();
     }

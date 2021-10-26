@@ -52,4 +52,9 @@ class Farmacia extends Model
     {
         return $this->hasMany('App\Models\Pedido', 'id_farmacia');
     }
+
+    public function compras()
+    {
+        return $this->hasMany('App\Models\Compra', 'id_farmacia');
+    }
 }
