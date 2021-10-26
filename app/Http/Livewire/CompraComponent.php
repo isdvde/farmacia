@@ -18,8 +18,8 @@ class CompraComponent extends Component
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $medicamento, $cantidad; 
-/*	public $inventario, $farmacia, $laboratorio, $empleado, $forma_pago;*/
+	public $medicamento, $cantidad, $farmacia; 
+	/*	public $inventario, $laboratorio, $empleado, $forma_pago;*/
 	public $pmedicamentos = null;
 	public $pid, $vencimiento, $cancelado, $isCompra, $compra, $pedido;
 	public $fpago = [
@@ -48,14 +48,13 @@ class CompraComponent extends Component
 
 	public function loadData(Pedido $pedido){
 		$this->reset();
+		$this->farmacia = Auth::user()->empleado->id_farmacia;
 		$this->pedido = $pedido;
-/*		$this->forma_pago = $pedido->forma_pago;*/
 		$this->cancelado = 0;
 		$this->pmedicamentos = $pedido->pedidoMedicamentos;
 		$this->cantidad = [];
 		$this->medicamento = [];
 		$this->isCompra = [];
-/*		$this->inventario = [];*/
 		foreach ($this->pmedicamentos as $pme) {
 			array_push($this->cantidad, $pme->cantidad);
 			array_push($this->medicamento, $pme->id_medicamento);
@@ -84,10 +83,10 @@ class CompraComponent extends Component
 	public function store() {
 		$compra = Compra::create([
 			'id_pedido' =>$this->pedido->id,
+			'id_farmacia' => $this->farmacia,
 			'vencimiento' => $this->vencimiento,
 			'cancelado' => $this->cancelado,
 		]);
-
 
 		for ($i=0; $i < count($this->medicamento); $i++) {
 			if(isset($this->isCompra[$i]) && $this->isCompra[$i] == "1"){
@@ -98,12 +97,20 @@ class CompraComponent extends Component
 				]);
 
 				$inv = Inventario::where('id_medicamento', $this->medicamento[$i])->first();
-				$oldValue = $inv->cantidad;
-				$newValue = $oldValue + $this->cantidad[$i];
 
-				$inv->update([
-					'cantidad' => $newValue
-				]);
+				if(isset($inv)) {
+					$oldValue = $inv->cantidad;
+					$newValue = $oldValue + $this->cantidad[$i];
+					$inv->update([
+						'cantidad' => $newValue
+					]);
+				} else {
+					Inventario::create([
+						'id_farmacia' => $this->farmacia,
+						'id_medicamento' => $this->medicamento[$i],
+						'cantidad' => $this->cantidad[$i]
+					]);
+				}
 			}
 		}
 

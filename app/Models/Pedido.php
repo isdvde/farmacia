@@ -74,7 +74,7 @@ class Pedido extends Model
 
     public function delete() {
 
-        $this->compras()->delete();
+        $this->compra()->delete();
         $this->pedidoMedicamentos()->delete();
         return parent::delete();
     }

@@ -19,7 +19,7 @@ class EmpleadoComponent extends Component
 	public $empleado;
 	public $formType;
 	public $ci, $farmacia, $nombre, $apellido, $edad, $cargo, $telefono;
-	public $institucion, $especialidad, $f_inicio, $n_permiso, $activo, $minoria;
+	public $institucion, $especialidad, $f_inicio, $n_permiso, $activo, $minoria, $f_final;
 	public $ci_r, $nombre_r, $apellido_r, $telefono_r;
 	public $universidad, $fecha, $n_registro, $p_sanitario, $n_colegiatura;
 	public $cargos = ["pasante", "administrativo", "farmaceutico", "vigilante", "analista",];
@@ -40,23 +40,25 @@ class EmpleadoComponent extends Component
 	}
 
 	public function closeCreate() {
-		$this->reset();
 		$this->dispatchBrowserEvent('closeCreateForm');
+		$this->reset();
 	}
 
 	public function edit(Empleado $empleado) {
+		$this->reset();
 		$this->formType = 1;
-		if($empleado != null) $this->loadData($empleado);
+		$this->loadData($empleado);
 		$this->dispatchBrowserEvent('openEditForm');
 	}
 
 	public function closeEdit() {
-		$this->reset();
 		$this->dispatchBrowserEvent('closeEditForm');
+		$this->reset();
 	}
 
 	public function loadData(Empleado $empleado){
 
+		$this->empleado = $empleado;
 		$this->ci = $empleado->ci;
 		$this->farmacia = $empleado->farmacia->id;
 		$this->nombre = $empleado->nombre;
@@ -70,6 +72,7 @@ class EmpleadoComponent extends Component
 				$this->institucion = $empleado->pasantia->institucion;
 				$this->especialidad = $empleado->pasantia->especialidad;
 				$this->f_inicio = $empleado->pasantia->f_inicio;
+				$this->f_final = $empleado->pasantia->f_final;
 				$this->n_permiso = $empleado->pasantia->n_permiso;
 				$this->activo = $empleado->pasantia->activo;
 			}
@@ -163,7 +166,8 @@ class EmpleadoComponent extends Component
 			$this->closeCreate();
 
 		} else if($this->formType == 1) {
-			Empleado::find($this->ci)->update([
+
+			$this->empleado->update([
 				'id_farmacia' => $this->farmacia,
 				'nombre' => $this->nombre,
 				'apellido' => $this->apellido,
@@ -173,7 +177,8 @@ class EmpleadoComponent extends Component
 			]);
 
 			if($this->cargo == "farmaceutico") {
-				Empleado::find($this->ci)->titulo()->update([
+				$this->empleado->titulo()->updateOrCreate([
+					'ci' => $this->empleado->ci,
 					'universidad' => $this->universidad,
 					'fecha' => $this->fecha,
 					'n_registro' => $this->n_registro,
@@ -183,23 +188,28 @@ class EmpleadoComponent extends Component
 			}
 
 			if($this->cargo == "pasante") {
-				$this->edad < 18 ? $minoria = true : $minoria = false;
-				$this->activo == "1" ? $activo = true : $activo = false;
-				Empleado::find($this->ci)->pasantia()->update([
+				$this->edad < 18 ? $minoria = 1 : $minoria = 0;
+				$this->activo == "1" ? $activo = 1 : $activo = 0;
+				$this->empleado->pasantia()->updateOrCreate([
+					'ci' => $this->empleado->ci,
 					'institucion' => $this->institucion,
 					'especialidad' => $this->especialidad,
 					'f_inicio' => $this->f_inicio,
+					'f_final' => $this->f_final,
 					'n_permiso' => $this->n_permiso, 
 					'minoria_edad' => $minoria,
 					'activo' => $activo
 				]);
 
-				Empleado::find($this->ci)->responsable()->update([
-					'ci_representante' => $this->ci_r,
-					'nombre' => $this->nombre_r,
-					'apellido' => $this->apellido_r,
-					'telefono' => $this->telefono_r
-				]);
+				if ($this->edad < 18) {
+					$this->empleado->responsable()->updateOrCreate([
+						'ci' => $this->empleado->ci,
+						'ci_representante' => $this->ci_r,
+						'nombre' => $this->nombre_r,
+						'apellido' => $this->apellido_r,
+						'telefono' => $this->telefono_r
+					]);
+				}
 			}
 
 			$this->closeEdit();
