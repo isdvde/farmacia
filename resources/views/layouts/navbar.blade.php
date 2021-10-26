@@ -24,5 +24,5 @@
 					</li>
 				</ul>
 			</div>
-		</div><!-- /.container-fluid -->
+		</div>
 	</nav>
