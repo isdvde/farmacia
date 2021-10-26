@@ -54,6 +54,7 @@
 
 
 	{{-- INICIO SECCION FARMACIA --}}
+
 	<li class="parent @if(preg_match('#farmacia.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#farmaciaItem">
 			<em class="	fa fa-home">&nbsp;&nbsp;</em>
@@ -64,14 +65,18 @@
 		</a>
 		<ul class="children collapse @if(preg_match('#farmacia.*#',Request::path())) in @endif" id="farmaciaItem">
 			<li>
+            @can('farmacia.view')
 				<a class="" href="{{ url('farmacia') }}">
 					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
 				</a>
+            @endcan
 			</li>
 			<li>
+               @can('farmacia.create')
 				<a class="" href="{{ url('farmacia/create') }}">
 					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
 				</a>
+                @endcan
 			</li>
 		</ul>
 	</li>
@@ -183,6 +188,8 @@
 	{{-- FIN SECCION MEDICAMENTO --}}
 
 {{-- INICIO SECCION COMPRA--}}
+
+@can('compra')
 	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#compraItem">
 			<em class="fa fa-money">&nbsp;&nbsp;</em>
@@ -199,6 +206,8 @@
 			</li>
 		</ul>
 	</li>
+
+@endcan
 	{{-- FIN SECCION COMPRA --}}
 
 

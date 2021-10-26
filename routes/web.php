@@ -97,7 +97,7 @@ Route::prefix('/')->middleware('auth')->group(function() {
 	    Route::post('create',[CompraController::class,'store' ]);
 	    Route::get('{id}/edit',[CompraController::class,'edit' ]);
 	    Route::post('{id}/edit',[CompraController::class,'update' ]);
-	    Route::get('{id}/show', [CompraController::class,'show' ]);
+	    Route::get('{id}/show', [CompraController::class,'show' ]);    
 	});
 
 });

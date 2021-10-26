@@ -11,6 +11,15 @@ use App\Models\Medicamento;
 
 class PedidoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:pedido.view')->only('index');
+        $this->middleware('can:pedido.create')->only('create','add');
+        $this->middleware('can:pedido.edit')->only('edit','update');
+        $this->middleware('can:pedido.delete')->only('delete');
+        $this->middleware('can:pedido.show')->only('show');
+    }
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -50,8 +59,8 @@ class PedidoController extends Controller
 			'forma_pago' => $request->forma_pago,
 		]);
 
-		for ($i=0; $i < count($request->medicamento); $i++) { 
-			
+		for ($i=0; $i < count($request->medicamento); $i++) {
+
 			$pedido->pedidoMedicamentos()->create([
 				'id_pedido' => $pedido->id,
 				'id_medicamento' => $request->medicamento[$i],
@@ -90,7 +99,7 @@ class PedidoController extends Controller
 		->with('medicamentos', Medicamento::all())
 		->with('pedido',Pedido::find($id))
 		->with('pmedicamentos',Pedido::find($id)->pedidoMedicamentos)
-		;	
+		;
 
 		//return Pedido::find($id)->pedidoMedicamentos;
 
@@ -105,13 +114,13 @@ class PedidoController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		$pedido = Pedido::find($id); 
+		$pedido = Pedido::find($id);
 
 		$pedido->update([
 			'forma_pago' => $request->forma_pago,
 		]);
 
-		//for ($i=0; $i < count($request->cantidad); $i++) { 
+		//for ($i=0; $i < count($request->cantidad); $i++) {
 		$i = 0;
 		foreach($pedido->pedidoMedicamentos as $medicamento) {
 			$medicamento->update([

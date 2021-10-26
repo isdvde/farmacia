@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Hash;
 class EmpleadoController extends Controller
 {
 
+public function __construct()
+    {
+        $this->middleware('can:empleado.view')->only('index');
+        $this->middleware('can:empleado.create')->only('create','add');
+        $this->middleware('can:empleado.edit')->only('edit','update');
+        $this->middleware('can:empleado.delete')->only('delete');
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -65,7 +73,7 @@ class EmpleadoController extends Controller
 
 		if($request->cargo == "farmaceutico") {
 			Empleado::find($request->ci)->titulo()->create([
-				'ci' => $request->ci, 
+				'ci' => $request->ci,
 				'universidad' => $request->universidad,
 				'fecha' => $request->fecha,
 				'n_registro' => $request->n_registro,
@@ -83,7 +91,7 @@ class EmpleadoController extends Controller
 				'institucion' => $request->institucion,
 				'especialidad' => $request->especialidad,
 				'f_inicio' => $request->f_inicio,
-				'n_permiso' => $request->n_permiso, 
+				'n_permiso' => $request->n_permiso,
 				'minoria_edad' => $minoria,
 				'activo' => $activo
 			]);
@@ -97,7 +105,7 @@ class EmpleadoController extends Controller
 			]);
 		}
 
-		for($i=1;; $i++) { 
+		for($i=1;; $i++) {
 			$username = strtolower(substr($request->nombre, 0, $i).$request->apellido);
 			if (!(User::where('username',$username)->first())) {
 				break;
@@ -147,7 +155,7 @@ class EmpleadoController extends Controller
 		->with('titulo', Titulo::find($ci))
 		->with('responsable', Responsable::find($ci))
 		->with('farmacias', Farmacia::all())
-		->with('cargos',$cargos);	
+		->with('cargos',$cargos);
 	}
 
 	/**
@@ -187,7 +195,7 @@ class EmpleadoController extends Controller
 				'institucion' => $request->institucion,
 				'especialidad' => $request->especialidad,
 				'f_inicio' => $request->f_inicio,
-				'n_permiso' => $request->n_permiso, 
+				'n_permiso' => $request->n_permiso,
 				'minoria_edad' => $minoria,
 				'activo' => $activo
 			]);

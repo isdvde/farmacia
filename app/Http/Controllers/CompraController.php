@@ -14,10 +14,21 @@ use Illuminate\Http\Request;
 
 class CompraController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:compra.view')->only('index');
+        $this->middleware('can:compra.create')->only('create','store');
+        $this->middleware('can:compra.edit')->only('edit','update');
+        $this->middleware('can:compra.show')->only('show');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
@@ -49,7 +60,7 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
-       
+
 
         $compra = Compra::create([
             'id_pedido' =>$request->id_pedido,
@@ -58,18 +69,16 @@ class CompraController extends Controller
 		]);
         for ($i=0; $i < count($request->medicamento); $i++) {
             if($request->checkMedicamento[$i]==1){
-                
+
 			$compra->compraMedicamentos()->create([
-              
+
 				'id_compra' => $compra->id,
 				'id_medicamento' => $request->medicamento[$i],
-				// 'cantidad' => $request->cantidad[$i],
+				'cantidad' => $request->cantidad[$i],
 			]);
 
            }
 		}
-
-		
 
 		return redirect('/compra');
     }
@@ -82,7 +91,7 @@ class CompraController extends Controller
      */
     public function show($id)
     {
-       
+
         return view('compra.show')
 		->with('compra',Compra::find($id))
         ->with('medicamentos',Compra::find($id)->compraMedicamentos)

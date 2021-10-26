@@ -73,7 +73,7 @@ class EmpleadoSeeder extends Seeder
 		]);
 
 
-		for ($i=0; $i < 100; $i++) { 
+		for ($i=0; $i < 100; $i++) {
 			$empleado = Empleado::factory()->create();
 
 			if($empleado->cargo == 'farmaceutico') {
@@ -88,7 +88,7 @@ class EmpleadoSeeder extends Seeder
 
 				if ($empleado->edad <= 17) {
 					$responsable = Responsable::factory()->create([
-						'ci' => $empleado->ci,	
+						'ci' => $empleado->ci,
 					]);
 				}
 			}

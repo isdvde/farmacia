@@ -31,6 +31,7 @@ class PermissionTableSeeder extends Seeder
 			'laboratorio',
 			'medicamento',
 			'pedido',
+            'compra',
 		];
 
 		$subPermission = [
@@ -38,11 +39,12 @@ class PermissionTableSeeder extends Seeder
 			'create',
 			'edit',
 			'delete',
+            'show',
 		];
 
 		foreach ($permission as $p) {
 			foreach ($subPermission as $sp) {
-				Permission::create(['name' => $p.'.'.$sp]);
+				Permission::create(['name' => $p.'.'.$sp]);    
 			}
 		}
 
