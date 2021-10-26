@@ -8,10 +8,7 @@ use App\Models\Farmacia;
 use App\Models\Medicamento;
 class InventarioController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:farmacia.view')->only('index');
-    }
+    
 
     /**
      * Display a listing of the resource.

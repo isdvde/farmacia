@@ -8,13 +8,7 @@ use App\Models\Laboratorio;
 class LaboratorioController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:laboratorio.view')->only('index');
-        $this->middleware('can:laboratorio.create')->only('create','store');
-        $this->middleware('can:laboratorio.edit')->only('edit','update');
-        $this->middleware('can:laboratorio.delete')->only('delete');
-    }
+  
 	/**
 	 * Display a listing of the resource.
 	 *

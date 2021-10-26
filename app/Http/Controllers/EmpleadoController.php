@@ -14,13 +14,6 @@ use Illuminate\Support\Facades\Hash;
 class EmpleadoController extends Controller
 {
 
-public function __construct()
-    {
-        $this->middleware('can:empleado.view')->only('index');
-        $this->middleware('can:empleado.create')->only('create','add');
-        $this->middleware('can:empleado.edit')->only('edit','update');
-        $this->middleware('can:empleado.delete')->only('delete');
-    }
 
 	/**
 	 * Display a listing of the resource.

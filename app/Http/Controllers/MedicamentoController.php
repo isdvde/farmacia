@@ -7,15 +7,7 @@ use App\Models\Medicamento;
 
 class MedicamentoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('can:medicamento.view')->only('index');
-        $this->middleware('can:medicamento.create')->only('create','store');
-        $this->middleware('can:medicamento.edit')->only('edit','update');
-        $this->middleware('can:medicamento.delete')->only('delete');
-    
-    }
-
+  
     /**
      * Display a listing of the resource.
      *

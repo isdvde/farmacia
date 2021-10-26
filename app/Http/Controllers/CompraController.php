@@ -15,15 +15,6 @@ use Illuminate\Http\Request;
 class CompraController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:compra.view')->only('index');
-        $this->middleware('can:compra.create')->only('create','store');
-        $this->middleware('can:compra.edit')->only('edit','update');
-        $this->middleware('can:compra.show')->only('show');
-    }
-
-
     /**
      * Display a listing of the resource.
      *

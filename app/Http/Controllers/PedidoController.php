@@ -12,14 +12,6 @@ use App\Models\Medicamento;
 class PedidoController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:pedido.view')->only('index');
-        $this->middleware('can:pedido.create')->only('create','add');
-        $this->middleware('can:pedido.edit')->only('edit','update');
-        $this->middleware('can:pedido.delete')->only('delete');
-        $this->middleware('can:pedido.show')->only('show');
-    }
 	/**
 	 * Display a listing of the resource.
 	 *

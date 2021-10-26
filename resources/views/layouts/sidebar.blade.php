@@ -189,7 +189,7 @@
 
 {{-- INICIO SECCION COMPRA--}}
 
-@can('compra')
+@can('compra.view')
 	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
 		<a data-toggle="collapse" href="#compraItem">
 			<em class="fa fa-money">&nbsp;&nbsp;</em>

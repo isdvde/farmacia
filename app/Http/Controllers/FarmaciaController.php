@@ -8,17 +8,12 @@ use App\Models\Pedido;
 use App\Models\Laboratorio;
 use Illuminate\Http\Request;
 
+
+
 class FarmaciaController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:farmacia.view')->only('index');
-        $this->middleware('can:farmacia.create')->only('create','store');
-        $this->middleware('can:farmacia.edit')->only('edit','update');
-        $this->middleware('can:farmacia.delete')->only('delete');
-        $this->middleware('can:farmacia.show')->only('show');
-    }
+   
     /**
      * Display a listing of the resource.
      *
@@ -122,4 +117,5 @@ class FarmaciaController extends Controller
 		$farmacia->delete();
 		return redirect('farmacia');
     }
+
 }
