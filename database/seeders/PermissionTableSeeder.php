@@ -15,15 +15,6 @@ class PermissionTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-
-
-		/*Permission::create(['name' => 'empleado.*']);
-		Permission::create(['name' => 'farmacia.*']);
-		Permission::create(['name' => 'inventario.*']);
-		Permission::create(['name' => 'laboratorio.*']);
-		Permission::create(['name' => 'medicamento.*']);
-		Permission::create(['name' => 'pedido.*']);*/
-
 		$permission = [
 			'empleado',
 			'farmacia',
@@ -46,13 +37,5 @@ class PermissionTableSeeder extends Seeder
 				Permission::create(['name' => $p.'.'.$sp]);
 			}
 		}
-
-/*
-		Permission::findOrCreate('empleado.*');
-		Permission::findOrCreate('farmacia.*');
-		Permission::findOrCreate('inventario.*');
-		Permission::findOrCreate('laboratorio.*');
-		Permission::findOrCreate('medicamento.*');
-		Permission::findOrCreate('pedido.*');*/
 	}
 }

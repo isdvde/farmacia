@@ -12,7 +12,7 @@ class FarmaciaComponent extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $formType;
-	public $farmacia, $nombre, $ubicacion;
+	public $farmacia, $nombre, $ubicacion, $total, $totalCompra;
 	protected $rules = [
 		'nombre' => 'required', 
 		'ubicacion' => 'required', 
@@ -59,11 +59,28 @@ class FarmaciaComponent extends Component
 	public function show(Farmacia $f) {
 		$this->reset();
 		$this->farmacia = $f;
+		$this->total = 0;
+		$this->totalCompra = [];
+		$this->total();
 		$this->dispatchBrowserEvent('openShow');
 	}
 
 	public function closeShow() {
 		$this->dispatchBrowserEvent('closeShow');
 		$this->reset();
+	}
+
+	public function total() {
+		foreach ($this->farmacia->compras as $c) {
+			$tc = 0;
+			if ($c->cancelado == 1) {
+				foreach ($c->compraMedicamentos as $cm) {
+					$tc += ($cm->cantidad * $cm->medicamento->precio);
+				}
+			}
+
+			array_push($this->totalCompra, $tc);
+			$this->total += $tc;
+		}
 	}
 }

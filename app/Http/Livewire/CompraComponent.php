@@ -19,7 +19,6 @@ class CompraComponent extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $medicamento, $cantidad, $farmacia; 
-	/*	public $inventario, $laboratorio, $empleado, $forma_pago;*/
 	public $pmedicamentos = null;
 	public $pid, $vencimiento, $cancelado, $isCompra, $compra, $pedido;
 	public $fpago = [
@@ -42,7 +41,7 @@ class CompraComponent extends Component
 		}
 
 		return view('livewire.compra.compra-component')
-		->with('compras', Compra::paginate(8))
+		->with('compras', $compras)
 		;
 	}
 

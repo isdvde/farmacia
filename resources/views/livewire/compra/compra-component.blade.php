@@ -42,7 +42,7 @@
 							@foreach($compras as $c)
 
 							<tr>
-								<td class="text-center">{{$c->pedido->farmacia->nombre}}</td>
+								<td class="text-center">{{$c->farmacia->nombre}}</td>
 								<td class="text-center">{{$c->id_pedido}}</td>
 								<td class="text-center">{{$c->vencimiento}}</td>
 								<td class="text-center">

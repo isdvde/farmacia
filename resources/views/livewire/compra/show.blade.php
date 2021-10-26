@@ -22,7 +22,7 @@
 					<tbody>
 						@isset ($compra)
 						<tr>
-							<td class="text-center">{{$compra->pedido->farmacia->nombre}}</td>
+							<td class="text-center">{{$compra->farmacia->nombre}}</td>
 							<td class="text-center">{{$compra->pedido->laboratorio->nombre}}</td>
 							<td class="text-center">
 								{{$compra->pedido->empleado->nombre.' '.$compra->pedido->empleado->apellido}}

@@ -126,10 +126,14 @@
 										<th scope="col" class="text-center">Pedido</th>
 										<th scope="col" class="text-center">Vencimiento</th>
 										<th scope="col" class="text-center">Cancelado</th>
+										<th scope="col" class="text-center">Total Compra</th>
 									</tr>
 								</thead>
 
 								<tbody>
+									@php
+										$n = 0
+									@endphp
 									@foreach($farmacia->compras as $c)
 									<tr>
 										<td class="text-center">{{$c->id_pedido}}</td>
@@ -137,9 +141,26 @@
 										<td class="text-center">
 											{{$c->cancelado == 0 ? 'No' : 'Si' }}
 										</td>
+										<td class="text-center">
+											{{$this->totalCompra[$n].'$'}}
+										</td>
 									</tr>
+									@php
+										$n++
+									@endphp
 									@endforeach
 								</tbody>
+
+								<tfoot>
+									<tr>
+										<th scope="col" class="text-center"></th>
+										<th scope="col" class="text-center"></th>
+										<th scope="col" class="text-center">Total General</th>
+										<td scope="col" class="text-center">{{ $total.'$' }}</td>
+									</tr>
+
+
+								</tfoot>
 							</table>
 
 						</div>
