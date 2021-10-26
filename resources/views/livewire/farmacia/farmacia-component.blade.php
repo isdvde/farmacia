@@ -20,16 +20,17 @@
 						</thead>
 
 						<tbody>
-							@foreach ( $farmacias as $farmacia )
+							@foreach ( $farmacias as $f )
 
 							<tr>
-								<td class="text-center">{{$farmacia->nombre}}</td>
-								<td class="text-center">{{$farmacia->ubicacion}}</td>
+								<td class="text-center">{{$f->nombre}}</td>
+								<td class="text-center">{{$f->ubicacion}}</td>
 
 								<td class="col-1 text-center">
 
-									<button wire:click.prevent="openForm({{ 1 }}, {{ $farmacia}})" class="btn btn-info" >Editar</button>
-									<button wire:click.prevent="delete({{ $farmacia->id }})" class="btn btn-danger" >Eliminar</button>
+									<button wire:click.prevent="show({{$f}})" class="btn btn-success" >Ver</button>
+									<button wire:click.prevent="openForm({{ 1 }}, {{ $f}})" class="btn btn-info" >Editar</button>
+									<button wire:click.prevent="delete({{ $f->id }})" class="btn btn-danger" >Eliminar</button>
 								</td>
 							</tr>
 							@endforeach
@@ -50,4 +51,5 @@
 			</div>
 		</div>
 		@include('livewire.farmacia.create')
+		@include('livewire.farmacia.show')
 	</div>
