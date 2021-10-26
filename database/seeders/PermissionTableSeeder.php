@@ -31,6 +31,7 @@ class PermissionTableSeeder extends Seeder
 			'laboratorio',
 			'medicamento',
 			'pedido',
+			'compra',
 		];
 
 		$subPermission = [

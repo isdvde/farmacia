@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Pedido;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PedidoFactory extends Factory
 {
@@ -25,6 +26,7 @@ class PedidoFactory extends Factory
 			'id_farmacia' => $this->faker->numberBetween($min = 1, $max = 15),
 			'id_laboratorio' => $this->faker->numberBetween($min = 1, $max = 30),
 			'id_empleado' => 1, 
+			'slug' => Str::random(10),
 			'forma_pago' => $this->faker->randomElement( 
 				$forma_pago = array(
 					'contado', '5d', '10d', '15d', '20d', '30d',

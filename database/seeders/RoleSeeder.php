@@ -22,7 +22,10 @@ class RoleSeeder extends Seeder
 
 		Role::create(['name' => 'admin'])->givePermissionTo(Permission::all());
 		Role::create(['name' => 'vigilante']);
-		Role::create(['name' => 'administrativo']);
+		Role::create(['name' => 'administrativo'])->givePermissionTo([
+			'inventario.view',
+			'medicamento.view',
+		]);
 		Role::create(['name' => 'farmaceutico'])->givePermissionTo([
 			'inventario.view',
 			'inventario.create',
@@ -30,7 +33,6 @@ class RoleSeeder extends Seeder
 			'medicamento.create',
 			'medicamento.view',
 			'medicamento.edit',
-/*			'inventario,medicamento.*'*/
 		]);
 		Role::create(['name' => 'analista'])->givePermissionTo([
 				'inventario.view',
@@ -42,19 +44,16 @@ class RoleSeeder extends Seeder
 				'pedido.create',
 				'pedido.view',
 				'pedido.edit',
+				'compra.create',
+				'compra.view',
+				'compra.edit',
 				'laboratorio.create',
 				'laboratorio.view',
 				'laboratorio.edit',
-/*			'inventario,medicamento,pedido,laboratorio.*'*/
 		]);
 		Role::create(['name' => 'pasante'])->givePermissionTo([
 			'inventario.view',
 			'medicamento.view',
-
-/*			'inventario,medicamento.view'*/
 		]);
-
-
-
 	}
 }

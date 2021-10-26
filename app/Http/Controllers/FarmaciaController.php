@@ -17,9 +17,7 @@ class FarmaciaController extends Controller
      */
     public function index()
     {
-
-        $farmacia = Farmacia::all();
-        return view('farmacia.index')->with('farmacias',$farmacia);
+        return view('farmacia.index');
     }
 
     /**

@@ -19,10 +19,13 @@ class CompraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($pid = null)
     {
         $compras = Compra::all();
-		return view('compra.index')->with('compras',$compras);
+		return view('compra.index')
+        ->with('compras',$compras)
+        ->with('pid', $pid)
+        ;
     }
 
     /**

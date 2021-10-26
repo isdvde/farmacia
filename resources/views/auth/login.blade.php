@@ -4,7 +4,10 @@
 	<div class="container h-100">
 		<div class="row justify-content-md-center h-100">
 			<div class="card-wrapper">
-				<h1 class="h1 text-center m-5">Farmacia</h1>
+				<h1 class="h1 text-center"><span style="color: #30a5ff;">FARMA</span>SEGURA</h1>
+				<div class="text-center">
+				<img src="{{ url('/img/logo.png') }}" class="img-responsive center-block" style="margin-bottom: 10px">
+				</div>
 				<div class="card fat">
 					<div class="card-body">
 						<h3 class="card-title text-center">Ingresar</h3>
@@ -33,7 +36,7 @@
 							</div>
 
 							<div class="form-group m-4 text-center">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="btn btn-primary" style="background-color: #30a5ff; border-color: #30a5ff;" >
 									Entrar
 								</button>
 							</div>

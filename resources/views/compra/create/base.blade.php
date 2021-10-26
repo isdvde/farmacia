@@ -10,23 +10,23 @@ $forma_pago = array(
 )
 @endphp
 <table class="table">
-					<thead>
-						<tr>
-							<th scope="col" class="text-center">Farmacia</th>
-							<th scope="col" class="text-center">Laboratorio</th>
-							<th scope="col" class="text-center">Metodo de Pago</th>
-							<th scope="col" class="text-center">Analista</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="text-center">{{$pedido->farmacia->nombre}}</th>
-							<td class="text-center">{{$pedido->laboratorio->nombre}}</th>
-							<td class="text-center">{{$forma_pago[$pedido->forma_pago]}}</th>
-							<td class="text-center">{{$pedido->empleado->nombre}}</th>
-						</tr>
-					</tbody>
-				</table>
+	<thead>
+		<tr>
+			<th scope="col" class="text-center">Farmacia</th>
+			<th scope="col" class="text-center">Laboratorio</th>
+			<th scope="col" class="text-center">Metodo de Pago</th>
+			<th scope="col" class="text-center">Analista</th>
+		</tr>
+	</thead>
+	<tbody>
+		@isset ($pedido)
+		<tr>
+			<td class="text-center">{{$pedido->farmacia->nombre}}</td>
+			<td class="text-center">{{$pedido->laboratorio->nombre}}</td>
+			<td class="text-center">{{$forma_pago[$pedido->forma_pago]}}</td>
+			<td class="text-center">{{$pedido->empleado->nombre}}</td>
+		</tr>
+		@endisset
+	</tbody>
+</table>
 
-{{-- VALORES DE PRUEBA --}}
-<input type="hidden" name="id_empleado" value="764">

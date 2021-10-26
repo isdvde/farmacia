@@ -1,7 +1,11 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="row">
+
+<livewire:compra-component :pid="$pid"/>
+
+
+{{-- <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">Compras</h1>
 	</div>
@@ -46,12 +50,13 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> --}}
 
-<script src="{{ url('lumino/js/datatables.min.js') }}"></script>
+{{-- <script src="{{ url('lumino/js/datatables.min.js') }}"></script>
 <script>
 	$(document).ready( function () {
 		$('#tcompra').DataTable();
 	} );
 </script>
+ --}}
 @endsection

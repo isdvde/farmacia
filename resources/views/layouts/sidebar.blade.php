@@ -1,7 +1,7 @@
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 	<div class="profile-sidebar">
 		<div class="profile-userpic">
-{{-- 			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt=""> --}}
+			{{-- 			<img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt=""> --}}
 			<img src="{{ url('img/user.png') }}" class="img-responsive" alt="">
 		</div>
 		<div class="profile-usertitle">
@@ -54,166 +54,82 @@
 
 
 	{{-- INICIO SECCION FARMACIA --}}
-	<li class="parent @if(preg_match('#farmacia.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#farmaciaItem">
-			<em class="	fa fa-home">&nbsp;&nbsp;</em>
-			Farmacias
-			<span data-toggle="collapse" href="#farmaciaItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+
+	@can('farmacia.view')
+	<li @if(Request::is('farmacia'))class="active"@endif>
+		<a href="{{ url('farmacia') }}">
+			<em class="	fa fa-home">&nbsp;</em> Farmacias
 		</a>
-		<ul class="children collapse @if(preg_match('#farmacia.*#',Request::path())) in @endif" id="farmaciaItem">
-			<li>
-				<a class="" href="{{ url('farmacia') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-			<li>
-				<a class="" href="{{ url('farmacia/create') }}">
-					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
-				</a>
-			</li>
-		</ul>
 	</li>
+	@endcan
+
 	{{-- FIN SECCION FARMACIA --}}
 
 	{{-- INICIO SECCION EMPLEADO --}}
-	<li class="parent @if(preg_match('#empleado.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#empleadoItem">
-			<em class="fa fa-user">&nbsp;&nbsp;</em>
-			Empleados
-			<span data-toggle="collapse" href="#empleadoItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+	
+	@can('empleado.view')
+	<li @if(Request::is('empleado'))class="active"@endif>
+		<a href="{{ url('empleado') }}">
+			<em class="	fa fa-user">&nbsp;</em> Empleados
 		</a>
-		<ul class="children collapse @if(preg_match('#empleado.*#',Request::path())) in @endif active" id="empleadoItem" >
-			<li>
-				<a class="" href="{{ url('empleado') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-			<li>
-				<a class="" href="{{ url('empleado/create') }}">
-					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
-				</a>
-			</li>
-		</ul>
 	</li>
+	@endcan
 
 	{{-- FIN SECCION EMPLEADO --}}
 
-	{{-- INICIO SECCION PEDIDO --}}
-	<li class="parent @if(preg_match('#pedido.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#pedidoItem">
-			<em class="fa fa-list-alt">&nbsp;&nbsp;</em>
-			Pedidos
-			<span data-toggle="collapse" href="#pedidoItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+	@can('pedido.view')
+	<li @if(Request::is('pedido'))class="active"@endif>
+		<a href="{{ url('pedido') }}">
+			<em class="	fa fa-list-alt">&nbsp;</em> Pedidos
 		</a>
-		<ul class="children collapse @if(preg_match('#pedido.*#',Request::path())) in @endif" id="pedidoItem">
-			<li>
-				<a class="" href="{{ url('pedido') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-			<li>
-				<a class="" href="{{ url('pedido/create') }}">
-					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
-				</a>
-			</li>
-		</ul>
 	</li>
+	@endcan
+
 	{{-- FIN SECCION PEDIDO --}}
 
 	{{-- INICIO SECCION LABORATORIO --}}
-	<li class="parent @if(preg_match('#laboratorio.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#laboratorioItem">
-			<em class="	fa fa-truck">&nbsp;&nbsp;</em>
-			Laboratorios
-			<span data-toggle="collapse" href="#laboratorioItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+
+	@can('laboratorio.view')
+	<li @if(Request::is('laboratorio'))class="active"@endif>
+		<a href="{{ url('laboratorio') }}">
+			<em class="	fa fa-truck">&nbsp;</em> Laboratorios
 		</a>
-		<ul class="children collapse @if(preg_match('#laboratorio.*#',Request::path())) in @endif" id="laboratorioItem">
-			<li>
-				<a class="" href="{{ url('laboratorio') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-			<li>
-				<a class="" href="{{ url('laboratorio/create') }}">
-					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
-				</a>
-			</li>
-		</ul>
 	</li>
+	@endcan
+
 	{{-- FIN SECCION LABORATORIO --}}
 
 	{{-- INICIO SECCION INVENTARIO --}}
-	<li>
+	@can('inventario.view')
+	<li @if(Request::is('inventario'))class="active"@endif>
 		<a href="{{ url('inventario') }}">
 			<em class="	fa fa-database">&nbsp;</em> Inventario
 		</a>
 	</li>
+	@endcan
 	{{-- FIN SECCION INVENTARIO --}}
 
 	{{-- INICIO SECCION MEDICAMENTO --}}
-	<li class="parent @if(preg_match('#medicamento.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#medicamentoItem">
-			<em class="fa fa-heartbeat">&nbsp;&nbsp;</em>
-			Medicamentos
-			<span data-toggle="collapse" href="#medicamentoItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+	
+	@can('medicamento.view')
+	<li @if(Request::is('medicamento'))class="active"@endif>
+		<a href="{{ url('medicamento') }}">
+			<em class="	fa fa-heartbeat">&nbsp;</em> Medicamentos
 		</a>
-		<ul class="children collapse @if(preg_match('#medicamento.*#',Request::path())) in @endif" id="medicamentoItem">
-			<li>
-				<a class="" href="{{ url('medicamento') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-			<li>
-				<a class="" href="{{ url('medicamento/create') }}">
-					<span class="fa fa-plus-circle">&nbsp;&nbsp;</span> Añadir
-				</a>
-			</li>
-		</ul>
 	</li>
+	@endcan
 	{{-- FIN SECCION MEDICAMENTO --}}
 
-{{-- INICIO SECCION COMPRA--}}
-	<li class="parent @if(preg_match('#compra.*#',Request::path())) active @endif">
-		<a data-toggle="collapse" href="#compraItem">
-			<em class="fa fa-money">&nbsp;&nbsp;</em>
-			compra
-			<span data-toggle="collapse" href="#compraItem" class="icon pull-right">
-				<em class="fa fa-plus"></em>
-			</span>
+	{{-- INICIO SECCION COMPRA--}}
+
+	@can('compra.view')
+	<li @if(preg_match('#compra.*#',Request::path()))class="active"@endif>
+		<a href="{{ url('compra') }}">
+			<em class="	fa fa-money">&nbsp;</em> Compras
 		</a>
-		<ul class="children collapse @if(preg_match('#compra.*#',Request::path())) in @endif" id="compraItem">
-			<li>
-				<a class="" href="{{ url('compra') }}">
-					<span class="fa fa-eye">&nbsp;&nbsp;</span> Mostrar
-				</a>
-			</li>
-		</ul>
-	</li>
+	</li>	
+	@endcan
 	{{-- FIN SECCION COMPRA --}}
-
-
-{{-- 	<li>
-		<a href="{{ url('logout') }}"><em class="fa fa-power-off">&nbsp;</em> Salir
-		</a>
-	</li> --}}
-
-{{-- 	<li>
-	<form action="{{ url('logout') }}" method="POST">
-		@csrf
-		<button type="submit" class="btn btn-danger"><em class="fa fa-power-off">&nbsp;</em> Salir
-		</button>
-	</form>
-</li> --}}
 
 </ul>
 </div><!--/.sidebar-->

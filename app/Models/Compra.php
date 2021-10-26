@@ -17,7 +17,7 @@ class Compra extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_pedido', 'vencimiento', 'cancelado'];
+    protected $fillable = ['id_farmacia','id_pedido', 'vencimiento', 'cancelado'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -25,6 +25,11 @@ class Compra extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    public function farmacia()
+    {
+        return $this->belongsTo('App\Models\Farmacia', 'id_farmacia');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
