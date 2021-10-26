@@ -17,6 +17,9 @@ class FarmaciaController extends Controller
      */
     public function index()
     {
+
+        //echo "<script>setTimeout(function(){ window.location.href = '".url('empleado')."'; }, 3000);</script>";
+
         return view('farmacia.index');
     }
 
