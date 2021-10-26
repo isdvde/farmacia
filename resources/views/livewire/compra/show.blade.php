@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">
-					Pedido
+					Compra
 				</h5>
 			</div>
 			<div class="modal-body">
@@ -11,7 +11,6 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col" class="text-center">ID</th>
 							<th scope="col" class="text-center">Farmacia</th>
 							<th scope="col" class="text-center">Laboratorio</th>
 							<th scope="col" class="text-center">Analista</th>
@@ -23,7 +22,6 @@
 					<tbody>
 						@isset ($compra)
 						<tr>
-							<td class="text-center">{{$compra->id}}</td>
 							<td class="text-center">{{$compra->pedido->farmacia->nombre}}</td>
 							<td class="text-center">{{$compra->pedido->laboratorio->nombre}}</td>
 							<td class="text-center">
@@ -65,11 +63,6 @@
 			</div>
 			<div class="modal-footer">
 				<button wire:click.prevent="closeShow" type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-				
-				<button wire:click.prevent="edit({{$compra}}, {{1}})" type="button" class="btn btn-primary">
-					Editar	
-				</button>
-
 			</div>
 		</div>
 	</div>

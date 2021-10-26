@@ -12,7 +12,7 @@
 		<tr>
 			<td class="text-center">{{$pedido->farmacia->nombre}}</td>
 			<td class="text-center">{{$pedido->laboratorio->nombre}}</td>
-			<td class="text-center">{{$fpago[$forma_pago]}}</td>
+			<td class="text-center">{{$fpago[$pedido->forma_pago]}}</td>
 			<td class="text-center">{{$pedido->empleado->nombre.' '.$pedido->empleado->apellido}}</td>
 		</tr>
 		@endisset

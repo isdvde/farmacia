@@ -18,8 +18,8 @@ class CompraComponent extends Component
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-	public $medicamento, $cantidad, $inventario;
-	public $farmacia, $laboratorio, $empleado, $forma_pago;
+	public $medicamento, $cantidad; 
+/*	public $inventario, $farmacia, $laboratorio, $empleado, $forma_pago;*/
 	public $pmedicamentos = null;
 	public $pid, $vencimiento, $cancelado, $isCompra, $compra, $pedido;
 	public $fpago = [
@@ -49,13 +49,13 @@ class CompraComponent extends Component
 	public function loadData(Pedido $pedido){
 		$this->reset();
 		$this->pedido = $pedido;
-		$this->forma_pago = $pedido->forma_pago;
+/*		$this->forma_pago = $pedido->forma_pago;*/
 		$this->cancelado = 0;
 		$this->pmedicamentos = $pedido->pedidoMedicamentos;
 		$this->cantidad = [];
 		$this->medicamento = [];
 		$this->isCompra = [];
-		$this->inventario = [];
+/*		$this->inventario = [];*/
 		foreach ($this->pmedicamentos as $pme) {
 			array_push($this->cantidad, $pme->cantidad);
 			array_push($this->medicamento, $pme->id_medicamento);

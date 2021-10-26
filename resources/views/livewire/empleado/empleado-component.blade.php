@@ -23,19 +23,20 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($empleados as $empleado)
+							@foreach($empleados as $e)
 							<tr>
-								<td class="text-center">{{$empleado->ci}}</td>
-								<td class="text-center">{{$empleado->farmacia->nombre}}</td>
-								<td class="text-center">{{$empleado->nombre}}</td>
-								<td class="text-center">{{$empleado->apellido}}</td>
-								<td class="text-center">{{$empleado->edad}}</td>
-								<td class="text-center">{{ucfirst($empleado->cargo)}}</td>
-								<td class="text-center">{{$empleado->telefono}}</td>
+								<td class="text-center">{{$e->ci}}</td>
+								<td class="text-center">{{$e->farmacia->nombre}}</td>
+								<td class="text-center">{{$e->nombre}}</td>
+								<td class="text-center">{{$e->apellido}}</td>
+								<td class="text-center">{{$e->edad}}</td>
+								<td class="text-center">{{ucfirst($e->cargo)}}</td>
+								<td class="text-center">{{$e->telefono}}</td>
 
 								<td class="col-1">
-									<button wire:click.prevent="edit({{$empleado}})" class="btn btn-info">Editar</button>
-									<button wire:click.prevent="delete({{$empleado->ci}})" class="btn btn-danger">Eliminar</button>
+									<button wire:click.prevent="show({{$e}})" class="btn btn-success">Ver</button>
+									<button wire:click.prevent="edit({{$e}})" class="btn btn-info">Editar</button>
+									<button wire:click.prevent="delete({{$e->ci}})" class="btn btn-danger">Eliminar</button>
 								</td>
 							</tr>
 							@endforeach
@@ -59,5 +60,6 @@
 	</div>
 	@include('livewire.empleado.create.create')
 	@include('livewire.empleado.edit.edit')
+	@include('livewire.empleado.show')
 
 </div>

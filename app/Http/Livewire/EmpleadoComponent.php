@@ -8,12 +8,15 @@ use App\Models\Farmacia;
 use App\Models\User;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class EmpleadoComponent extends Component
 {
 	use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
+	public $empleado;
 	public $formType;
 	public $ci, $farmacia, $nombre, $apellido, $edad, $cargo, $telefono;
 	public $institucion, $especialidad, $f_inicio, $n_permiso, $activo, $minoria;
@@ -96,7 +99,7 @@ class EmpleadoComponent extends Component
 	public function store() {
 
 		if($this->formType == 0) {
-			Empleado::create([
+			$empleado = Empleado::create([
 				'ci' => $this->ci,
 				'id_farmacia' => $this->farmacia,
 				'nombre' => $this->nombre,
@@ -148,11 +151,14 @@ class EmpleadoComponent extends Component
 				}
 			}
 
-			Empleado::find($this->ci)->user()->create([
+			$user = Empleado::find($this->ci)->user()->create([
 				'ci' => $this->ci,
 				'username' => $username,
 				'password' => Hash::make($username),
 			]);
+
+			$user->assignRole($empleado->cargo);
+			$user->givePermissionTo(Role::findByName($empleado->cargo)->permissions()->pluck('name'));
 
 			$this->closeCreate();
 
@@ -202,5 +208,15 @@ class EmpleadoComponent extends Component
 
 	public function delete($id) {
 		Empleado::destroy($id);		
+	}
+
+	public function show(Empleado $empleado) {
+		if($empleado != null) $this->empleado = $empleado;
+		$this->dispatchBrowserEvent('openShow');
+	}
+
+	public function closeShow() {
+		$this->dispatchBrowserEvent('closeShow');
+		$this->reset();
 	}
 }
