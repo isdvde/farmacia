@@ -29,23 +29,30 @@ Route::prefix('/')->middleware('auth')->group(function() {
 	});
 
 // EMPLEADOS
-	Route::get('empleado', 'EmpleadoController@index');
+	Route::get('empleado', 'EmpleadoController@index')
+	->middleware('role:admin|administrativo');
 
 // PEDIDOS
-	Route::get('pedido', 'PedidoController@index');
+	Route::get('pedido', 'PedidoController@index')
+	->middleware('role:admin|analista');
 
 //laboratorio
-	Route::get('laboratorio',[LaboratorioController::class,'index' ]);
+	Route::get('laboratorio',[LaboratorioController::class,'index' ])
+	->middleware('role:admin|analista');
 
 //inventario
-	Route::get('inventario',[InventarioController::class,'index' ]);
+	Route::get('inventario',[InventarioController::class,'index' ])
+	->middleware('role:admin|administrativo|farmaceutico|analista|pasante');
 
 //medicamento
-	Route::get('medicamento',[MedicamentoController::class,'index' ]);
+	Route::get('medicamento',[MedicamentoController::class,'index' ])
+	->middleware('role:admin|analista|administrativo|farmaceutico|pasante');
 
 //farmacia
-	Route::get('farmacia',[FarmaciaController::class,'index' ]);
+	Route::get('farmacia',[FarmaciaController::class,'index' ])
+	->middleware('role:admin|analista|farmaceutico|administrativo');
 
 	//compra
-	Route::get('compra/{pid?}',[CompraController::class,'index' ]);
+	Route::get('compra/{pid?}',[CompraController::class,'index' ])
+	->middleware('role:admin|administrativo|analista');
 });
