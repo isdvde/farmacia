@@ -1,6 +1,5 @@
 # Proyecto Farmacia
 ## Sistemas Bases de Datos 2
-> Ferman, Porras, Garcia, Moreno
 
 ### Instalacion
 
