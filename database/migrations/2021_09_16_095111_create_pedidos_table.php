@@ -15,7 +15,7 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('id_farmacia')->index('id_farmacia');
+            $table->integer('id_farmacia');
             $table->integer('id_laboratorio')->index('id_laboratorio');
             $table->integer('id_empleado')->index('id_empleado');
             $table->string('forma_pago', 45)->nullable();
